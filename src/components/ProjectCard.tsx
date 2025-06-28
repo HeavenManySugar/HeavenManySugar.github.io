@@ -14,6 +14,51 @@ interface ProjectCardProps {
     size?: 'large' | 'small';
 }
 
+// 安全的連結開啟函數
+const openLink = (url: string) => {
+    try {
+        // 檢查 URL 是否有效
+        if (!url || url.trim() === '') {
+            console.error('Invalid URL:', url);
+            return;
+        }
+
+        // 如果是相對路徑，直接在當前頁面開啟
+        if (url.startsWith('/')) {
+            window.location.href = url;
+        } else {
+            // 外部連結在新分頁開啟
+            const newWindow = window.open(url, '_blank');
+            if (newWindow) {
+                newWindow.focus();
+            } else {
+                // 如果彈窗被阻擋，嘗試在當前頁面開啟
+                window.location.href = url;
+            }
+        }
+    } catch (error) {
+        console.error('Error opening link:', error);
+        // 備用方案：嘗試直接設置 location
+        try {
+            window.location.href = url;
+        } catch (fallbackError) {
+            console.error('Fallback also failed:', fallbackError);
+        }
+    }
+};
+
+interface ProjectCardProps {
+    title: string;
+    description: string;
+    technologies: string[];
+    projectUrl?: string;
+    githubUrl: string;
+    icon: string;
+    gradientFrom: string;
+    gradientTo: string;
+    size?: 'large' | 'small';
+}
+
 // 技術標籤的顏色映射
 const getTechColor = (tech: string) => {
     const colorMap: { [key: string]: string } = {
@@ -89,7 +134,7 @@ export default function ProjectCard({
 
     return (
         <motion.div
-            className={`bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg group cursor-pointer relative ${isLarge ? '' : 'shadow-md'}`}
+            className={`bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg group relative ${isLarge ? '' : 'shadow-md'}`}
             variants={cardVariants}
             initial="hidden"
             animate="visible"
@@ -101,7 +146,6 @@ export default function ProjectCard({
                     : "0 20px 40px -12px rgba(0, 0, 0, 0.25)",
                 transition: { duration: 0.3 }
             }}
-            whileTap={{ scale: 0.98 }}
         >
             {/* 背景光暈效果 */}
             <motion.div
@@ -208,17 +252,19 @@ export default function ProjectCard({
                     }}
                 >
                     {projectUrl && (
-                        <motion.a
-                            href={projectUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium flex items-center gap-1 ${isLarge ? 'text-sm' : 'text-xs'}`}
+                        <motion.button
+                            className={`text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium flex items-center gap-1 ${isLarge ? 'text-sm' : 'text-xs'} cursor-pointer relative z-10 bg-transparent border-none p-0`}
                             whileHover={{
                                 scale: 1.05,
                                 x: 2,
                                 transition: { duration: 0.2 }
                             }}
                             whileTap={{ scale: 0.95 }}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                openLink(projectUrl);
+                            }}
                         >
                             查看專案
                             <motion.svg
@@ -234,19 +280,21 @@ export default function ProjectCard({
                             >
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </motion.svg>
-                        </motion.a>
+                        </motion.button>
                     )}
-                    <motion.a
-                        href={githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300 font-medium flex items-center gap-1 ${isLarge ? 'text-sm' : 'text-xs'}`}
+                    <motion.button
+                        className={`text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300 font-medium flex items-center gap-1 ${isLarge ? 'text-sm' : 'text-xs'} cursor-pointer relative z-10 bg-transparent border-none p-0`}
                         whileHover={{
                             scale: 1.05,
                             x: 2,
                             transition: { duration: 0.2 }
                         }}
                         whileTap={{ scale: 0.95 }}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            openLink(githubUrl);
+                        }}
                     >
                         GitHub
                         <motion.svg
@@ -260,7 +308,7 @@ export default function ProjectCard({
                         >
                             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                         </motion.svg>
-                    </motion.a>
+                    </motion.button>
                 </motion.div>
             </div>
         </motion.div>
