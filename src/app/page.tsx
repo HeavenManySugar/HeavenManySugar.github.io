@@ -1,6 +1,5 @@
 'use client';
 
-import { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -116,7 +115,7 @@ export default function Home() {
             className="text-2xl md:text-4xl text-gray-600 dark:text-gray-400 mb-6"
             variants={itemVariants}
           >
-            Hi! I'm{" "}
+            Hi! I&apos;m{" "}
             <motion.span
               className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient"
               whileHover={{ scale: 1.05 }}

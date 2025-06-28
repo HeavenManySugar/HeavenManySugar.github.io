@@ -51,8 +51,7 @@ export default function Skills() {
         description,
         skills,
         color,
-        centered = false,
-        index
+        centered = false
     }: {
         icon: string;
         title: string;
@@ -60,7 +59,6 @@ export default function Skills() {
         skills: string[];
         color: string;
         centered?: boolean;
-        index: number;
     }) => (
         <motion.div
             className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl transition-shadow duration-300"
@@ -176,8 +174,8 @@ export default function Skills() {
                         whileInView="visible"
                         viewport={{ once: true }}
                     >
-                        {skillsData.map((skill, index) => (
-                            <SkillSection key={skill.title} {...skill} index={index} />
+                        {skillsData.map((skill) => (
+                            <SkillSection key={skill.title} {...skill} />
                         ))}
                     </motion.div>
 
@@ -196,7 +194,6 @@ export default function Skills() {
                             skills={aiSkills}
                             color="purple"
                             centered={true}
-                            index={3}
                         />
                     </motion.div>
                 </div>
@@ -246,7 +243,7 @@ export default function Skills() {
                                 description: "社團領導, 專案管理, 協作開發",
                                 color: "red"
                             }
-                        ].map((item, index) => (
+                        ].map((item) => (
                             <motion.div
                                 key={item.title}
                                 className="text-center bg-white/70 dark:bg-gray-700/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-600/50"

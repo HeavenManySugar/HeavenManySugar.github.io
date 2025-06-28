@@ -8,7 +8,7 @@ import EducationCard from "@/components/EducationCard";
 import AwardCard from "@/components/AwardCard";
 import OtherAchievementCard from "@/components/OtherAchievementCard";
 import TechStageCard from "@/components/TechStageCard";
-import { getFadeInAnimation, getStaggerDelay, gradientBackgrounds, textEffects } from "@/utils/animationUtils";
+import { getFadeInAnimation, textEffects } from "@/utils/animationUtils";
 
 // =============================================================================
 // 常數定義區塊

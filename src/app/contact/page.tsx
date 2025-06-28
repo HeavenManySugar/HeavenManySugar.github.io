@@ -126,7 +126,7 @@ export default function Contact() {
                             initial="hidden"
                             animate="visible"
                         >
-                            {contactMethods.map((method, index) => {
+                            {contactMethods.map((method) => {
                                 const IconComponent = method.icon;
                                 return (
                                     <motion.div
