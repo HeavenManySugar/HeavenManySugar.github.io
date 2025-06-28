@@ -1,12 +1,9 @@
-import { Metadata } from "next";
+'use client';
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProjectSection from "@/components/ProjectSection";
-
-export const metadata: Metadata = {
-    title: "精選專案 - 張睿恩 (Rui-En Zhang)",
-    description: "探索張睿恩的作品集 - 包含各種網頁應用程式、前端專案與全端開發案例",
-};
+import { motion } from "framer-motion";
 
 // 主要專案數據
 const featuredProjects = [
@@ -98,83 +95,195 @@ const smallProjects = [
 
 export default function Projects() {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-blue-900">
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 relative overflow-hidden">
+            {/* 背景裝飾 */}
+            <div className="absolute inset-0 overflow-hidden">
+                <motion.div
+                    className="absolute -top-40 -right-40 w-80 h-80 bg-blue-400 rounded-full opacity-10"
+                    animate={{
+                        scale: [1, 1.3, 1],
+                        opacity: [0.1, 0.3, 0.1],
+                        rotate: [0, 180, 360],
+                    }}
+                    transition={{
+                        duration: 20,
+                        repeat: Infinity,
+                        ease: "linear"
+                    }}
+                />
+                <motion.div
+                    className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-400 rounded-full opacity-10"
+                    animate={{
+                        scale: [1.3, 1, 1.3],
+                        opacity: [0.3, 0.1, 0.3],
+                        rotate: [360, 180, 0],
+                    }}
+                    transition={{
+                        duration: 25,
+                        repeat: Infinity,
+                        ease: "linear"
+                    }}
+                />
+            </div>
+
             <Header />
 
             {/* Projects Section */}
-            <section className="py-20 relative overflow-hidden">
-                {/* 背景裝飾 */}
-                <div className="absolute inset-0 overflow-hidden">
-                    <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-400 rounded-full opacity-10 animate-pulse"></div>
-                    <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-400 rounded-full opacity-10 animate-pulse"></div>
-                </div>
-
-                <div className="container mx-auto px-6 relative z-10">
+            <section className="py-20 relative z-10">
+                <div className="container mx-auto px-6">
                     {/* 頁面標題 */}
-                    <div className="text-center mb-20">
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-6">
+                    <motion.div
+                        className="text-center mb-20"
+                        initial={{ opacity: 0, y: -30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <motion.h1
+                            className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-6"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                        >
                             專案作品集
-                        </h1>
-                        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                            歡迎瀏覽我的程式開發作品集，這裡展示了我在不同技術領域的實戰經驗與創新思維
-                        </p>
-                        <div className="mt-8 flex justify-center">
-                            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
-                        </div>
-                    </div>
+                        </motion.h1>
+                        <motion.p
+                            className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                        >
+                            歡迎瀏覽我的程式開發作品集，這裡展示了我在不同技術領域的專案
+                        </motion.p>
+                        <motion.div
+                            className="mt-8 flex justify-center"
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.6, delay: 0.6 }}
+                        >
+                            <motion.div
+                                className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                                animate={{
+                                    width: [96, 120, 96],
+                                    opacity: [0.8, 1, 0.8],
+                                }}
+                                transition={{
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                            />
+                        </motion.div>
+                    </motion.div>
 
                     {/* 精選專案 */}
-                    <ProjectSection
-                        title="精選專案"
-                        projects={featuredProjects}
-                        size="large"
-                        gridCols="lg:grid-cols-3"
-                    />
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true }}
+                    >
+                        <ProjectSection
+                            title="精選專案"
+                            projects={featuredProjects}
+                            size="large"
+                            gridCols="lg:grid-cols-3"
+                        />
+                    </motion.div>
 
                     {/* 小專案 */}
-                    <ProjectSection
-                        title="小專案"
-                        projects={smallProjects}
-                        size="small"
-                        gridCols="lg:grid-cols-4"
-                    />
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        viewport={{ once: true }}
+                    >
+                        <ProjectSection
+                            title="小專案"
+                            projects={smallProjects}
+                            size="small"
+                            gridCols="lg:grid-cols-4"
+                        />
+                    </motion.div>
 
                     {/* 技能統計 */}
-                    <div className="mt-20 text-center">
-                        <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-white/20 dark:border-gray-700/20">
-                            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-8">專案統計</h3>
+                    <motion.div
+                        className="mt-20 text-center"
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        viewport={{ once: true }}
+                    >
+                        <motion.div
+                            className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 border border-white/20 dark:border-gray-700/20 shadow-lg"
+                            whileHover={{ scale: 1.02, y: -5 }}
+                            transition={{ type: "spring", stiffness: 300 }}
+                        >
+                            <motion.h3
+                                className="text-2xl font-bold text-gray-800 dark:text-white mb-8"
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ duration: 0.6, delay: 0.6 }}
+                                viewport={{ once: true }}
+                            >
+                                專案統計
+                            </motion.h3>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                                <div className="text-center">
-                                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-                                        {featuredProjects.length + smallProjects.length}
-                                    </div>
-                                    <div className="text-gray-600 dark:text-gray-400 text-sm">完成專案</div>
-                                </div>
-                                <div className="text-center">
-                                    <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">
-                                        {Array.from(new Set([...featuredProjects, ...smallProjects].flatMap(p => p.technologies))).length}
-                                    </div>
-                                    <div className="text-gray-600 dark:text-gray-400 text-sm">使用技術</div>
-                                </div>
-                                <div className="text-center">
-                                    <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">
-                                        {featuredProjects.length}
-                                    </div>
-                                    <div className="text-gray-600 dark:text-gray-400 text-sm">精選專案</div>
-                                </div>
-                                <div className="text-center">
-                                    <div className="text-3xl font-bold text-orange-600 dark:text-orange-400 mb-2">
-                                        {smallProjects.length}
-                                    </div>
-                                    <div className="text-gray-600 dark:text-gray-400 text-sm">小專案</div>
-                                </div>
+                                {[
+                                    {
+                                        value: featuredProjects.length + smallProjects.length,
+                                        label: "完成專案",
+                                        color: "text-blue-600 dark:text-blue-400"
+                                    },
+                                    {
+                                        value: Array.from(new Set([...featuredProjects, ...smallProjects].flatMap(p => p.technologies))).length,
+                                        label: "使用技術",
+                                        color: "text-purple-600 dark:text-purple-400"
+                                    },
+                                    {
+                                        value: featuredProjects.length,
+                                        label: "精選專案",
+                                        color: "text-green-600 dark:text-green-400"
+                                    },
+                                    {
+                                        value: smallProjects.length,
+                                        label: "小專案",
+                                        color: "text-orange-600 dark:text-orange-400"
+                                    }
+                                ].map((stat, index) => (
+                                    <motion.div
+                                        key={stat.label}
+                                        className="text-center"
+                                        initial={{ opacity: 0, scale: 0.5 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                                        viewport={{ once: true }}
+                                        whileHover={{ scale: 1.1 }}
+                                    >
+                                        <motion.div
+                                            className={`text-3xl font-bold mb-2 ${stat.color}`}
+                                            animate={{
+                                                scale: [1, 1.05, 1],
+                                            }}
+                                            transition={{
+                                                duration: 2,
+                                                repeat: Infinity,
+                                                delay: index * 0.5,
+                                            }}
+                                        >
+                                            {stat.value}
+                                        </motion.div>
+                                        <div className="text-gray-600 dark:text-gray-400 text-sm">
+                                            {stat.label}
+                                        </div>
+                                    </motion.div>
+                                ))}
                             </div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </section>
 
             <Footer />
-        </div >
+        </div>
     );
 }

@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import ScrollProgress from "@/components/ScrollProgress";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "張睿恩 (Rui-En Zhang) - 個人網頁",
   description: "張睿恩的個人網頁 - 熱愛程式設計與創新的開發者 | Rui-En Zhang's personal website - A passionate developer",
+  keywords: "張睿恩, Rui-En Zhang, 程式設計, 網頁開發, 軟體開發, programming, web development",
+  authors: [{ name: "張睿恩 (Rui-En Zhang)" }],
+  openGraph: {
+    title: "張睿恩 (Rui-En Zhang) - 個人網頁",
+    description: "熱愛程式設計與創新的開發者",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -23,10 +26,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-TW">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="zh-TW" className="scroll-smooth">
+      <body className={`${inter.className} antialiased`}>
+        <ScrollProgress />
         {children}
       </body>
     </html>

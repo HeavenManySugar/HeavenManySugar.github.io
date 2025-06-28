@@ -1,62 +1,157 @@
+'use client';
+
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { SiGitea } from 'react-icons/si';
+import { motion } from 'framer-motion';
 
 export default function Footer() {
+    const socialLinks = [
+        {
+            href: "https://github.com/heavenmanysugar",
+            icon: FaGithub,
+            label: "heavenmanysugar",
+            color: "hover:text-gray-400"
+        },
+        {
+            href: "https://gitea.com/zre",
+            icon: SiGitea,
+            label: "zre",
+            color: "hover:text-green-400"
+        },
+        {
+            href: "https://linkedin.com/in/ruien-zhang",
+            icon: FaLinkedin,
+            label: "ruien-zhang",
+            color: "hover:text-blue-400"
+        },
+        {
+            href: "mailto:me@zre.tw",
+            icon: MdEmail,
+            label: "me@zre.tw",
+            color: "hover:text-red-400"
+        }
+    ];
+
     return (
-        <footer className="bg-gray-800 dark:bg-gray-900 text-white py-12">
-            <div className="container mx-auto px-6">
+        <motion.footer
+            className="bg-gradient-to-r from-gray-800 via-gray-900 to-black dark:from-gray-900 dark:via-black dark:to-gray-900 text-white py-16 relative overflow-hidden"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+        >
+            {/* 背景裝飾 */}
+            <div className="absolute inset-0 overflow-hidden">
+                <motion.div
+                    className="absolute top-0 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"
+                    animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.3, 0.5, 0.3],
+                    }}
+                    transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                />
+                <motion.div
+                    className="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"
+                    animate={{
+                        scale: [1.2, 1, 1.2],
+                        opacity: [0.5, 0.3, 0.5],
+                    }}
+                    transition={{
+                        duration: 10,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                />
+            </div>
+
+            <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center">
-                    <h5 className="text-2xl font-bold mb-4">張睿恩 (Rui-En Zhang)</h5>
-                    <p className="text-gray-400 mb-6">
+                    <motion.h5
+                        className="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                    >
+                        張睿恩 (Rui-En Zhang)
+                    </motion.h5>
+
+                    <motion.p
+                        className="text-gray-300 mb-6 text-lg"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        viewport={{ once: true }}
+                    >
                         熱愛程式開發，喜歡學習新技術 ✨
-                    </p>
-                    <p className="text-gray-400 mb-6">
+                    </motion.p>
+
+                    <motion.p
+                        className="text-gray-400 mb-8 text-lg"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                        viewport={{ once: true }}
+                    >
                         Passionate about coding and always learning something new 🚀
-                    </p>
-                    <div className="flex justify-center space-x-6">
-                        <a
-                            href="https://github.com/heavenmanysugar"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors group"
-                        >
-                            <FaGithub className="w-5 h-5" />
-                            <span className="group-hover:underline">heavenmanysugar</span>
-                        </a>
-                        <a
-                            href="https://gitea.com/zre"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors group"
-                        >
-                            <SiGitea className="w-5 h-5" />
-                            <span className="group-hover:underline">zre</span>
-                        </a>
-                        <a
-                            href="https://linkedin.com/in/ruien-zhang"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors group"
-                        >
-                            <FaLinkedin className="w-5 h-5" />
-                            <span className="group-hover:underline">ruien-zhang</span>
-                        </a>
-                        <a
-                            href="mailto:me@zre.tw"
-                            className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors group"
-                        >
-                            <MdEmail className="w-5 h-5" />
-                            <span className="group-hover:underline">me@zre.tw</span>
-                        </a>
-                    </div>
-                    <div className="mt-8 pt-8 border-t border-gray-700">
+                    </motion.p>
+
+                    <motion.div
+                        className="flex justify-center space-x-8 mb-8"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        viewport={{ once: true }}
+                    >
+                        {socialLinks.map((link, index) => {
+                            const IconComponent = link.icon;
+                            return (
+                                <motion.a
+                                    key={link.href}
+                                    href={link.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`flex flex-col items-center space-y-2 text-gray-400 ${link.color} transition-all duration-300 group`}
+                                    whileHover={{ scale: 1.1, y: -5 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+                                    viewport={{ once: true }}
+                                >
+                                    <motion.div
+                                        className="p-3 bg-gray-700/50 rounded-xl backdrop-blur-sm border border-gray-600/30 group-hover:bg-gray-600/50 transition-all duration-300"
+                                        whileHover={{ rotate: [0, -5, 5, 0] }}
+                                        transition={{ duration: 0.5 }}
+                                    >
+                                        <IconComponent className="w-6 h-6" />
+                                    </motion.div>
+                                    <span className="text-sm group-hover:underline font-medium">
+                                        {link.label}
+                                    </span>
+                                </motion.a>
+                            );
+                        })}
+                    </motion.div>
+
+                    <motion.div
+                        className="pt-8 border-t border-gray-700/50"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ duration: 0.6, delay: 0.8 }}
+                        viewport={{ once: true }}
+                    >
                         <p className="text-gray-400 text-sm">
                             Made with ❤️ by 張睿恩 (Rui-En Zhang) © 2025
                         </p>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
-        </footer>
+        </motion.footer>
     );
 }
