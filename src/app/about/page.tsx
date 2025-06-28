@@ -127,7 +127,7 @@ const TECH_DEVELOPMENT_STAGES = [
         icon: "⚛️",
         bgColor: "blue",
         borderColor: "blue-500",
-        title: "前端開發專精",
+        title: "前端開發能力",
         description: "深入學習現代前端開發技術棧，從基礎的HTML/CSS/JavaScript到React生態系，專注於組件化開發、狀態管理和性能優化。掌握Next.js全端框架，能夠開發SEO友好的現代網頁應用。",
         skills: ["React", "Next.js", "TypeScript", "Tailwind CSS"]
     },
