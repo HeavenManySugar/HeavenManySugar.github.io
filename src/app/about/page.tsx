@@ -9,6 +9,12 @@ import AwardCard from "@/components/AwardCard";
 import OtherAchievementCard from "@/components/OtherAchievementCard";
 import TechStageCard from "@/components/TechStageCard";
 import { getFadeInAnimation, textEffects } from "@/utils/animationUtils";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "關於我",
+    description: "了解張睿恩的個人背景、教育經歷、專業技能與獲獎記錄",
+};
 
 // =============================================================================
 // 常數定義區塊

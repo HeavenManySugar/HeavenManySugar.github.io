@@ -6,12 +6,6 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
-// export const metadata: Metadata = {
-//   title: "張睿恩 (Rui-En Zhang) - 個人網頁",
-//   description:
-//     "張睿恩的個人網頁 - 熱愛程式設計與創新的開發者，專注於創造美觀實用的網頁應用程式 | Rui-En Zhang's personal website",
-// };
-
 export default function Home() {
   const containerVariants = {
     hidden: { opacity: 0 },

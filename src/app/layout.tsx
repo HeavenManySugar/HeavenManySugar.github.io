@@ -9,10 +9,23 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "張睿恩 (Rui-En Zhang) - 個人網頁",
+  title: {
+    template: "%s | 張睿恩 (Rui-En Zhang)",
+    default: "張睿恩 (Rui-En Zhang) - 個人網頁",
+  },
   description: "張睿恩的個人網頁 - 熱愛程式設計與創新的開發者 | Rui-En Zhang's personal website - A passionate developer",
   keywords: "張睿恩, Rui-En Zhang, 程式設計, 網頁開發, 軟體開發, programming, web development",
   authors: [{ name: "張睿恩 (Rui-En Zhang)" }],
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-16x16.svg', sizes: '16x16', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.svg', sizes: '180x180', type: 'image/svg+xml' },
+    ],
+  },
   openGraph: {
     title: "張睿恩 (Rui-En Zhang) - 個人網頁",
     description: "熱愛程式設計與創新的開發者",
