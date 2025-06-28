@@ -12,7 +12,7 @@ export default function ProjectsClient() {
             title: "個人網站",
             description: "使用 Next.js 和 Tailwind CSS 建立的響應式個人網站，展示個人技能與專案作品。",
             technologies: ["Next.js", "Tailwind CSS", "TypeScript"],
-            projectUrl: "/",
+            projectUrl: "https://zre.tw",
             githubUrl: "https://github.com/HeavenManySugar/HeavenManySugar.github.io",
             icon: "🌐",
             gradientFrom: "from-blue-400",
@@ -34,7 +34,7 @@ export default function ProjectsClient() {
             technologies: ["C++", "CMake", "Git"],
             projectUrl: "https://github.com/NTUT-FUCK-PTSD/Fuck-PTSD/releases/tag/v1.0.6",
             githubUrl: "https://github.com/NTUT-FUCK-PTSD/Fuck-PTSD",
-            icon: "📊",
+            icon: "🎮",
             gradientFrom: "from-orange-400",
             gradientTo: "to-red-500"
         },
@@ -56,9 +56,9 @@ export default function ProjectsClient() {
             title: "TTS Web",
             description: "TTS Web 是一個基於 Next.js 的文字轉語音應用程式，提供多語言支持和語音選擇功能。",
             technologies: ["Next.js"],
-            projectUrl: "/tts-web",
+            projectUrl: "https://zre.tw/tts-web",
             githubUrl: "https://github.com/HeavenManySugar/tts-web",
-            icon: "⚛️",
+            icon: "🔊",
             gradientFrom: "from-indigo-400",
             gradientTo: "to-purple-500"
         },
@@ -66,9 +66,9 @@ export default function ProjectsClient() {
             title: "Isolate React 配置工具",
             description: "一個現代化的、使用者友善的 Web 介面，用於配置 Isolate 沙盒。",
             technologies: ["Next.js", "daisyUI"],
-            projectUrl: "/isolate-react",
+            projectUrl: "https://zre.tw/isolate-react",
             githubUrl: "https://github.com/HeavenManySugar/isolate-react",
-            icon: "🎮",
+            icon: "🛡️",
             gradientFrom: "from-pink-400",
             gradientTo: "to-red-500"
         },
@@ -78,7 +78,7 @@ export default function ProjectsClient() {
             technologies: ["Python", "LangChain", "Ollama"],
             projectUrl: "https://github.com/Bryan-Eva/ETKMP",
             githubUrl: "https://github.com/Bryan-Eva/ETKMP",
-            icon: "📝",
+            icon: "🏢",
             gradientFrom: "from-emerald-400",
             gradientTo: "to-teal-500"
         },
@@ -88,7 +88,7 @@ export default function ProjectsClient() {
             technologies: ["SwiftUI", "Firebase", "AI"],
             projectUrl: "https://www.canva.com/design/DAGqheO54t8/TzX726Eu0ZKVJ-MJrnIgwQ/edit?utm_content=DAGqheO54t8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
             githubUrl: "https://github.com/HeavenManySugar/Todolist",
-            icon: "🔧",
+            icon: "✅",
             gradientFrom: "from-amber-400",
             gradientTo: "to-orange-500"
         }
