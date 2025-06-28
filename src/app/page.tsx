@@ -155,7 +155,7 @@ export default function Home() {
                 查看我的作品
               </Link>
             </motion.div>
-            <motion.div
+            {/* <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -167,7 +167,7 @@ export default function Home() {
               >
                 下載履歷
               </a>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </motion.div>
 
