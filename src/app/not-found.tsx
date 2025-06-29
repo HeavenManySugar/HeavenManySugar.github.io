@@ -14,7 +14,6 @@ export default function NotFound() {
             setCountdown((prev) => {
                 if (prev <= 1) {
                     clearInterval(timer);
-                    router.push('/');
                     return 0;
                 }
                 return prev - 1;
@@ -22,7 +21,13 @@ export default function NotFound() {
         }, 1000);
 
         return () => clearInterval(timer);
-    }, [router]);
+    }, []);
+
+    useEffect(() => {
+        if (countdown === 0) {
+            router.push('/');
+        }
+    }, [countdown, router]);
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900">
