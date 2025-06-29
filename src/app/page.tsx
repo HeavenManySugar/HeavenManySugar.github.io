@@ -1,10 +1,8 @@
-'use client';
-
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import MotionWrapper from "@/components/MotionWrapper";
 
 export default function Home() {
   const containerVariants = {
@@ -43,7 +41,7 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 relative overflow-hidden">
       {/* 背景裝飾元素 */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.div
+        <MotionWrapper
           className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
@@ -55,7 +53,7 @@ export default function Home() {
             ease: "linear"
           }}
         />
-        <motion.div
+        <MotionWrapper
           className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-pink-400 to-yellow-400 rounded-full opacity-20 blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
@@ -73,14 +71,14 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="container mx-auto px-6 py-20 text-center relative z-10">
-        <motion.div
+        <MotionWrapper
           className="max-w-4xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <motion.div className="mb-8" variants={itemVariants}>
-            <motion.div
+          <MotionWrapper className="mb-8" variants={itemVariants}>
+            <MotionWrapper
               className="w-32 h-32 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full mx-auto mb-6 flex items-center justify-center relative animate-gradient"
               animate={floatingAnimation}
               whileHover={{ scale: 1.1, rotate: 5 }}
@@ -88,56 +86,62 @@ export default function Home() {
             >
               <span className="text-4xl font-bold text-white drop-shadow-lg">張</span>
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-50 blur-xl animate-pulse" />
-            </motion.div>
-          </motion.div>
+            </MotionWrapper>
+          </MotionWrapper>
 
-          <motion.h2
+          <MotionWrapper
+            type="h2"
             className="text-5xl md:text-7xl font-bold text-gray-800 dark:text-white mb-6"
             variants={itemVariants}
           >
             嗨！我是{" "}
-            <motion.span
+            <MotionWrapper
+              type="span"
               className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient whitespace-nowrap"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               張睿恩
-            </motion.span>
-          </motion.h2>
+            </MotionWrapper>
+          </MotionWrapper>
 
-          <motion.h3
+          <MotionWrapper
+            type="h3"
             className="text-2xl md:text-4xl text-gray-600 dark:text-gray-400 mb-6"
             variants={itemVariants}
           >
             Hi! I&apos;m{" "}
-            <motion.span
+            <MotionWrapper
+              type="span"
               className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient whitespace-nowrap"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               Rui-En Zhang
-            </motion.span>
-          </motion.h3>
+            </MotionWrapper>
+          </MotionWrapper>
 
-          <motion.p
+          <MotionWrapper
+            type="p"
             className="text-xl text-gray-600 dark:text-gray-300 mb-4 max-w-2xl mx-auto"
             variants={itemVariants}
           >
             一位熱愛程式設計與創新的開發者
-          </motion.p>
+          </MotionWrapper>
 
-          <motion.p
+          <MotionWrapper
+            type="p"
             className="text-lg text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto"
             variants={itemVariants}
           >
             A passionate developer who loves programming and innovation
-          </motion.p>
+          </MotionWrapper>
 
-          <motion.div
+          <MotionWrapper
             className="flex flex-col sm:flex-row gap-4 justify-center"
             variants={itemVariants}
           >
-            <motion.div
+            <MotionWrapper
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -147,8 +151,8 @@ export default function Home() {
               >
                 查看我的作品
               </Link>
-            </motion.div>
-            {/* <motion.div
+            </MotionWrapper>
+            {/* <MotionWrapper
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -160,38 +164,39 @@ export default function Home() {
               >
                 下載履歷
               </a>
-            </motion.div> */}
-          </motion.div>
-        </motion.div>
+            </MotionWrapper> */}
+          </MotionWrapper>
+        </MotionWrapper>
 
         {/* 滾動提示 */}
-        <motion.div
+        <MotionWrapper
           className="mt-16"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1 }}
         >
-          <motion.div
+          <MotionWrapper
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             className="flex flex-col items-center text-gray-400"
           >
             <span className="text-sm mb-2">探索更多</span>
             <ChevronDownIcon className="w-6 h-6" />
-          </motion.div>
-        </motion.div>
+          </MotionWrapper>
+        </MotionWrapper>
       </section>
 
       {/* Quick Navigation */}
       <section className="container mx-auto px-6 py-20 relative z-10">
-        <motion.div
+        <MotionWrapper
           className="max-w-6xl mx-auto"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <motion.h3
+          <MotionWrapper
+            type="h3"
             className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -199,7 +204,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             探索更多
-          </motion.h3>
+          </MotionWrapper>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
@@ -235,7 +240,7 @@ export default function Home() {
                 bgColor: "bg-yellow-100 dark:bg-yellow-900"
               }
             ].map((item, index) => (
-              <motion.div
+              <MotionWrapper
                 key={item.href}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -248,27 +253,27 @@ export default function Home() {
                   href={item.href}
                   className="block bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-gray-200/50 dark:border-gray-700/50"
                 >
-                  <motion.div
+                  <MotionWrapper
                     className={`w-16 h-16 ${item.bgColor} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}
                     whileHover={{ rotate: [0, -5, 5, 0] }}
                     transition={{ duration: 0.5 }}
                   >
                     <span className="text-3xl">{item.icon}</span>
-                  </motion.div>
+                  </MotionWrapper>
                   <h4 className="text-xl font-semibold text-gray-800 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                     {item.title}
                   </h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                     {item.description}
                   </p>
-                  <motion.div
+                  <MotionWrapper
                     className={`mt-4 h-1 bg-gradient-to-r ${item.gradient} rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
                   />
                 </Link>
-              </motion.div>
+              </MotionWrapper>
             ))}
           </div>
-        </motion.div>
+        </MotionWrapper>
       </section>
 
       <Footer />
