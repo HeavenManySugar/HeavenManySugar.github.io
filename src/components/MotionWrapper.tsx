@@ -6,16 +6,23 @@ import { forwardRef } from 'react';
 interface MotionWrapperProps {
     type?: keyof typeof motion;
     children?: React.ReactNode;
-    [key: string]: unknown;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: any;
 }
 
-const MotionWrapper = forwardRef<HTMLDivElement, MotionWrapperProps>(({ type, children, ...props }, ref) => {
-    const Component =
-        type && typeof type === "string" && type in motion
-            ? (motion as unknown as Record<string, React.ComponentType<React.HTMLAttributes<HTMLElement>>>)[type as string]
-            : motion.div;
+const MotionWrapper = forwardRef<HTMLElement, MotionWrapperProps>(({ type, children, ...props }, ref) => {
+    // 直接從 motion 對象中獲取組件，預設為 div
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const Component = (type && (motion as any)[type]) ? (motion as any)[type] : motion.div;
 
-    return <Component ref={ref} {...props}>{children as React.ReactNode}</Component>;
+    return (
+        <Component
+            ref={ref}
+            {...props}
+        >
+            {children}
+        </Component>
+    );
 });
 
 MotionWrapper.displayName = "MotionWrapper";
