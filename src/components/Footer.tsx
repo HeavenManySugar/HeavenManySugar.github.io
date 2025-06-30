@@ -4,25 +4,7 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { SiGitea } from 'react-icons/si';
 import MotionWrapper from '@/components/MotionWrapper';
-
-// 定義 build 信息的類型
-interface BuildInfo {
-    commitHash: string;
-    shortCommitHash: string;
-    branchName: string;
-    commitDate: string;
-    buildTime: string;
-}
-
-// 嘗試導入 build 信息
-let buildInfo: BuildInfo | null = null;
-try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    buildInfo = require('@/build-info.json') as BuildInfo;
-} catch {
-    // 如果無法找到 build 信息文件，使用默認值
-    console.warn('Build info not found, using defaults');
-}
+import { buildInfo } from '@/build-info';
 
 export default function Footer() {
     const socialLinks = [
@@ -173,7 +155,7 @@ export default function Footer() {
                         <p className="text-gray-400 text-sm mb-2">
                             Made with ❤️ by 張睿恩 (Rui-En Zhang) © 2025
                         </p>
-                        {buildInfo && (
+                        {buildInfo && buildInfo.shortCommitHash !== 'dev' && (
                             <MotionWrapper
                                 type="div"
                                 className="text-xs text-gray-500 space-y-1"
@@ -184,13 +166,13 @@ export default function Footer() {
                             >
                                 <p>
                                     Build: <span className="font-mono text-gray-400">{buildInfo.shortCommitHash}</span>
-                                    {buildInfo.branchName !== 'unknown' && (
+                                    {buildInfo.branchName !== 'unknown' && buildInfo.branchName !== 'dev' && (
                                         <span className="ml-2">
                                             on <span className="font-mono text-gray-400">{buildInfo.branchName}</span>
                                         </span>
                                     )}
                                 </p>
-                                {buildInfo.buildTime && (
+                                {buildInfo.buildTime && buildInfo.buildTime !== 'unknown' && (
                                     <p>
                                         Built: <span className="text-gray-400">
                                             {new Date(buildInfo.buildTime).toLocaleString()}

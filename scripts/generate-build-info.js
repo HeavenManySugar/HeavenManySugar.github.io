@@ -28,9 +28,22 @@ try {
         fs.mkdirSync(srcDir, { recursive: true });
     }
 
-    // 寫入 build 信息到文件
+    // 寫入 build 信息到 JSON 文件
     const buildInfoPath = path.join(srcDir, 'build-info.json');
     fs.writeFileSync(buildInfoPath, JSON.stringify(buildInfo, null, 2));
+
+    // 同時創建一個 TypeScript 模組
+    const buildInfoTsPath = path.join(srcDir, 'build-info.ts');
+    const tsContent = `// 這個文件是自動生成的，請不要手動編輯
+export const buildInfo = {
+  commitHash: ${JSON.stringify(buildInfo.commitHash)},
+  shortCommitHash: ${JSON.stringify(buildInfo.shortCommitHash)},
+  branchName: ${JSON.stringify(buildInfo.branchName)},
+  commitDate: ${JSON.stringify(buildInfo.commitDate)},
+  buildTime: ${JSON.stringify(buildInfo.buildTime)}
+};
+`;
+    fs.writeFileSync(buildInfoTsPath, tsContent);
 
     console.log('✅ Build info generated:', buildInfo);
 } catch (error) {
@@ -52,4 +65,17 @@ try {
 
     const buildInfoPath = path.join(srcDir, 'build-info.json');
     fs.writeFileSync(buildInfoPath, JSON.stringify(fallbackBuildInfo, null, 2));
+
+    // 同時創建一個 TypeScript 模組
+    const buildInfoTsPath = path.join(srcDir, 'build-info.ts');
+    const tsContent = `// 這個文件是自動生成的，請不要手動編輯
+export const buildInfo = {
+  commitHash: ${JSON.stringify(fallbackBuildInfo.commitHash)},
+  shortCommitHash: ${JSON.stringify(fallbackBuildInfo.shortCommitHash)},
+  branchName: ${JSON.stringify(fallbackBuildInfo.branchName)},
+  commitDate: ${JSON.stringify(fallbackBuildInfo.commitDate)},
+  buildTime: ${JSON.stringify(fallbackBuildInfo.buildTime)}
+};
+`;
+    fs.writeFileSync(buildInfoTsPath, tsContent);
 }
