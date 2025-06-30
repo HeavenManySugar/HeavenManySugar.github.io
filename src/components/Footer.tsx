@@ -131,7 +131,7 @@ export default function Footer() {
                                     >
                                         <IconComponent className="w-6 h-6" />
                                     </motion.div>
-                                    <span className="text-sm group-hover:underline font-medium">
+                                    <span className="text-sm group-hover:underline font-medium hidden sm:inline">
                                         {link.label}
                                     </span>
                                 </motion.a>
