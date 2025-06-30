@@ -4,6 +4,7 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { SiGitea } from 'react-icons/si';
 import MotionWrapper from '@/components/MotionWrapper';
+import ClientOnlyBuildInfo from '@/components/ClientOnlyBuildInfo';
 import { buildInfo } from '@/build-info';
 
 export default function Footer() {
@@ -156,30 +157,11 @@ export default function Footer() {
                             Made with ❤️ by 張睿恩 (Rui-En Zhang) © 2025
                         </p>
                         {buildInfo && buildInfo.shortCommitHash !== 'dev' && (
-                            <MotionWrapper
-                                type="div"
-                                className="text-xs text-gray-500 space-y-1"
-                                initial={{ opacity: 0, y: 10 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 1.0 }}
-                                viewport={{ once: true }}
-                            >
-                                <p>
-                                    Build: <span className="font-mono text-gray-400">{buildInfo.shortCommitHash}</span>
-                                    {buildInfo.branchName !== 'unknown' && buildInfo.branchName !== 'dev' && (
-                                        <span className="ml-2">
-                                            on <span className="font-mono text-gray-400">{buildInfo.branchName}</span>
-                                        </span>
-                                    )}
-                                </p>
-                                {buildInfo.buildTime && buildInfo.buildTime !== 'unknown' && (
-                                    <p>
-                                        Built: <span className="text-gray-400">
-                                            {new Date(buildInfo.buildTime).toLocaleString()}
-                                        </span>
-                                    </p>
-                                )}
-                            </MotionWrapper>
+                            <ClientOnlyBuildInfo
+                                buildTime={buildInfo.buildTime}
+                                shortCommitHash={buildInfo.shortCommitHash}
+                                branchName={buildInfo.branchName}
+                            />
                         )}
                     </MotionWrapper>
                 </div>

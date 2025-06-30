@@ -19,7 +19,8 @@ try {
         shortCommitHash,
         branchName,
         commitDate,
-        buildTime: new Date().toISOString()
+        buildTime: new Date().toISOString(),
+        buildTimestamp: Date.now() // Add numerical timestamp for consistency
     };
 
     // 確保 src 目錄存在
@@ -35,12 +36,15 @@ try {
     // 同時創建一個 TypeScript 模組
     const buildInfoTsPath = path.join(srcDir, 'build-info.ts');
     const tsContent = `// 這個文件是自動生成的，請不要手動編輯
-export const buildInfo = {
+import type { BuildInfo } from '@/types/build-info';
+
+export const buildInfo: BuildInfo = {
   commitHash: ${JSON.stringify(buildInfo.commitHash)},
   shortCommitHash: ${JSON.stringify(buildInfo.shortCommitHash)},
   branchName: ${JSON.stringify(buildInfo.branchName)},
   commitDate: ${JSON.stringify(buildInfo.commitDate)},
-  buildTime: ${JSON.stringify(buildInfo.buildTime)}
+  buildTime: ${JSON.stringify(buildInfo.buildTime)},
+  buildTimestamp: ${buildInfo.buildTimestamp}
 };
 `;
     fs.writeFileSync(buildInfoTsPath, tsContent);
@@ -55,7 +59,8 @@ export const buildInfo = {
         shortCommitHash: 'unknown',
         branchName: 'unknown',
         commitDate: 'unknown',
-        buildTime: new Date().toISOString()
+        buildTime: new Date().toISOString(),
+        buildTimestamp: Date.now()
     };
 
     const srcDir = path.join(__dirname, '..', 'src');
@@ -69,12 +74,15 @@ export const buildInfo = {
     // 同時創建一個 TypeScript 模組
     const buildInfoTsPath = path.join(srcDir, 'build-info.ts');
     const tsContent = `// 這個文件是自動生成的，請不要手動編輯
-export const buildInfo = {
+import type { BuildInfo } from '@/types/build-info';
+
+export const buildInfo: BuildInfo = {
   commitHash: ${JSON.stringify(fallbackBuildInfo.commitHash)},
   shortCommitHash: ${JSON.stringify(fallbackBuildInfo.shortCommitHash)},
   branchName: ${JSON.stringify(fallbackBuildInfo.branchName)},
   commitDate: ${JSON.stringify(fallbackBuildInfo.commitDate)},
-  buildTime: ${JSON.stringify(fallbackBuildInfo.buildTime)}
+  buildTime: ${JSON.stringify(fallbackBuildInfo.buildTime)},
+  buildTimestamp: ${fallbackBuildInfo.buildTimestamp}
 };
 `;
     fs.writeFileSync(buildInfoTsPath, tsContent);
