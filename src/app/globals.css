@@ -34,6 +34,22 @@ body {
   scroll-behavior: smooth;
 }
 
+/* 確保在沒有 JavaScript 的情況下內容可見 */
+@media (scripting: none) {
+  * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+}
+
+/* 在 noscript 環境下確保內容可見 */
+noscript * {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
 /* 進階動畫效果 */
 @keyframes fade-in-up {
   0% {

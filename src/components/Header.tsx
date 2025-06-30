@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import MotionWrapper from '@/components/MotionWrapper';
 
 export default function Header() {
     const pathname = usePathname();
@@ -18,14 +18,15 @@ export default function Header() {
     ];
 
     return (
-        <motion.header
+        <MotionWrapper
+            type="header"
             className="container mx-auto px-6 py-8 relative z-50"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
         >
             <nav className="flex justify-between items-center">
-                <motion.div
+                <MotionWrapper
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                 >
@@ -35,12 +36,12 @@ export default function Header() {
                     >
                         張睿恩 (Rui-En Zhang)
                     </Link>
-                </motion.div>
+                </MotionWrapper>
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex space-x-8">
                     {navItems.map((item, index) => (
-                        <motion.div
+                        <MotionWrapper
                             key={item.href}
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -54,7 +55,7 @@ export default function Header() {
                             >
                                 {item.label}
                                 {pathname === item.href && (
-                                    <motion.div
+                                    <MotionWrapper
                                         className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"
                                         layoutId="activeTab"
                                         initial={false}
@@ -62,12 +63,13 @@ export default function Header() {
                                     />
                                 )}
                             </Link>
-                        </motion.div>
+                        </MotionWrapper>
                     ))}
                 </div>
 
                 {/* Mobile Menu Button */}
-                <motion.button
+                <MotionWrapper
+                    type="button"
                     className="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -77,11 +79,11 @@ export default function Header() {
                     ) : (
                         <Bars3Icon className="w-6 h-6" />
                     )}
-                </motion.button>
+                </MotionWrapper>
             </nav>
 
             {/* Mobile Navigation */}
-            <motion.div
+            <MotionWrapper
                 className={`md:hidden mt-4 ${isMenuOpen ? 'block' : 'hidden'}`}
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: isMenuOpen ? 1 : 0, height: isMenuOpen ? 'auto' : 0 }}
@@ -89,7 +91,7 @@ export default function Header() {
             >
                 <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-200/50 dark:border-gray-700/50">
                     {navItems.map((item, index) => (
-                        <motion.div
+                        <MotionWrapper
                             key={item.href}
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -103,10 +105,10 @@ export default function Header() {
                             >
                                 {item.label}
                             </Link>
-                        </motion.div>
+                        </MotionWrapper>
                     ))}
                 </div>
-            </motion.div>
-        </motion.header>
+            </MotionWrapper>
+        </MotionWrapper>
     );
 }

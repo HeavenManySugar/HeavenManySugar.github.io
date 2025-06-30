@@ -3,7 +3,7 @@
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { SiGitea } from 'react-icons/si';
-import { motion } from 'framer-motion';
+import MotionWrapper from '@/components/MotionWrapper';
 
 export default function Footer() {
     const socialLinks = [
@@ -34,7 +34,8 @@ export default function Footer() {
     ];
 
     return (
-        <motion.footer
+        <MotionWrapper
+            type="footer"
             className="bg-gradient-to-r from-gray-800 via-gray-900 to-black dark:from-gray-900 dark:via-black dark:to-gray-900 text-white py-16 relative overflow-hidden"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -43,7 +44,7 @@ export default function Footer() {
         >
             {/* 背景裝飾 */}
             <div className="absolute inset-0 overflow-hidden">
-                <motion.div
+                <MotionWrapper
                     className="absolute top-0 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"
                     animate={{
                         scale: [1, 1.2, 1],
@@ -55,7 +56,7 @@ export default function Footer() {
                         ease: "easeInOut"
                     }}
                 />
-                <motion.div
+                <MotionWrapper
                     className="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"
                     animate={{
                         scale: [1.2, 1, 1.2],
@@ -71,7 +72,8 @@ export default function Footer() {
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center">
-                    <motion.h5
+                    <MotionWrapper
+                        type="h5"
                         className="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -79,9 +81,10 @@ export default function Footer() {
                         viewport={{ once: true }}
                     >
                         張睿恩 (Rui-En Zhang)
-                    </motion.h5>
+                    </MotionWrapper>
 
-                    <motion.p
+                    <MotionWrapper
+                        type="p"
                         className="text-gray-300 mb-6 text-lg"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -89,9 +92,10 @@ export default function Footer() {
                         viewport={{ once: true }}
                     >
                         熱愛程式開發，喜歡學習新技術 ✨
-                    </motion.p>
+                    </MotionWrapper>
 
-                    <motion.p
+                    <MotionWrapper
+                        type="p"
                         className="text-gray-400 mb-8 text-lg"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -99,9 +103,9 @@ export default function Footer() {
                         viewport={{ once: true }}
                     >
                         Passionate about coding and always learning something new 🚀
-                    </motion.p>
+                    </MotionWrapper>
 
-                    <motion.div
+                    <MotionWrapper
                         className="flex justify-center space-x-8 mb-8"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -111,7 +115,8 @@ export default function Footer() {
                         {socialLinks.map((link, index) => {
                             const IconComponent = link.icon;
                             return (
-                                <motion.a
+                                <MotionWrapper
+                                    type="a"
                                     key={link.href}
                                     href={link.href}
                                     target="_blank"
@@ -124,22 +129,22 @@ export default function Footer() {
                                     transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
                                     viewport={{ once: true }}
                                 >
-                                    <motion.div
+                                    <MotionWrapper
                                         className="p-3 bg-gray-700/50 rounded-xl backdrop-blur-sm border border-gray-600/30 group-hover:bg-gray-600/50 transition-all duration-300"
                                         whileHover={{ rotate: [0, -5, 5, 0] }}
                                         transition={{ duration: 0.5 }}
                                     >
                                         <IconComponent className="w-6 h-6" />
-                                    </motion.div>
+                                    </MotionWrapper>
                                     <span className="text-sm group-hover:underline font-medium hidden sm:inline">
                                         {link.label}
                                     </span>
-                                </motion.a>
+                                </MotionWrapper>
                             );
                         })}
-                    </motion.div>
+                    </MotionWrapper>
 
-                    <motion.div
+                    <MotionWrapper
                         className="pt-8 border-t border-gray-700/50"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
@@ -149,9 +154,9 @@ export default function Footer() {
                         <p className="text-gray-400 text-sm">
                             Made with ❤️ by 張睿恩 (Rui-En Zhang) © 2025
                         </p>
-                    </motion.div>
+                    </MotionWrapper>
                 </div>
             </div>
-        </motion.footer>
+        </MotionWrapper>
     );
 }
