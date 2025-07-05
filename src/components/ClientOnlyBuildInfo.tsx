@@ -28,11 +28,17 @@ export default function ClientOnlyBuildInfo({ buildTime, shortCommitHash, branch
                 transition={{ duration: 0.6, delay: 1.0 }}
                 viewport={{ once: true }}
             >
-                <p>
-                    Build: <span className="font-mono text-gray-400">{shortCommitHash}</span>
+                <p>                Build: <span className="font-mono text-gray-400">{shortCommitHash}</span>
                     {branchName !== 'unknown' && branchName !== 'dev' && (
                         <span className="ml-2">
-                            on <span className="font-mono text-gray-400">{branchName}</span>
+                            on <a
+                                href={`https://github.com/HeavenManySugar/HeavenManySugar.github.io/tree/${branchName}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-mono text-gray-400 hover:text-blue-400 hover:underline transition-colors"
+                            >
+                                {branchName}
+                            </a>
                         </span>
                     )}
                 </p>
@@ -56,7 +62,14 @@ export default function ClientOnlyBuildInfo({ buildTime, shortCommitHash, branch
                 Build: <span className="font-mono text-gray-400">{shortCommitHash}</span>
                 {branchName !== 'unknown' && branchName !== 'dev' && (
                     <span className="ml-2">
-                        on <span className="font-mono text-gray-400">{branchName}</span>
+                        on <a
+                            href={`https://github.com/HeavenManySugar/HeavenManySugar.github.io/tree/${branchName}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-mono text-gray-400 hover:text-blue-400 hover:underline transition-colors"
+                        >
+                            {branchName}
+                        </a>
                     </span>
                 )}
             </p>
