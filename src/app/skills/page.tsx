@@ -68,6 +68,9 @@ export default function SkillsClient() {
         <MotionWrapper
             className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl transition-shadow duration-300"
             variants={itemVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.05 }}
             whileHover={{ y: -8, scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
         >
@@ -99,14 +102,14 @@ export default function SkillsClient() {
             title: "前端開發",
             description: "學習關於現代前端技術，重視使用者體驗與介面設計，創造流暢的互動體驗",
             skills: ["React", "Next.js", "Nuxt.js", "Vue.js", "HTML", "CSS", "Tailwind CSS", "Framer Motion"],
-            color: "blue"
+            color: "emerald"
         },
         {
             icon: "⚙️",
             title: "程式設計",
             description: "熟悉多種程式語言，能夠應用於不同的開發需求",
             skills: ["C", "C#", "C++", "Python", "Java", "JavaScript", "TypeScript", "Golang"],
-            color: "green"
+            color: "amber"
         },
         {
             icon: "🌐",
@@ -121,11 +124,11 @@ export default function SkillsClient() {
     const aiSkills = ["Machine Learning", "TensorFlow", "PyTorch", "Data Analysis", "Pandas", "NumPy", "Scikit-learn"];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 relative overflow-hidden">
+        <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-rose-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden">
             {/* 背景裝飾 */}
             <div className="absolute inset-0 overflow-hidden">
                 <MotionWrapper
-                    className="absolute top-20 left-20 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl"
+                    className="absolute top-20 left-20 w-64 h-64 bg-amber-400/10 rounded-full blur-3xl"
                     animate={{
                         scale: [1, 1.3, 1],
                         opacity: [0.3, 0.6, 0.3],
@@ -137,7 +140,7 @@ export default function SkillsClient() {
                     }}
                 />
                 <MotionWrapper
-                    className="absolute bottom-20 right-20 w-64 h-64 bg-purple-400/10 rounded-full blur-3xl"
+                    className="absolute bottom-20 right-20 w-64 h-64 bg-rose-400/10 rounded-full blur-3xl"
                     animate={{
                         scale: [1.3, 1, 1.3],
                         opacity: [0.6, 0.3, 0.6],
@@ -177,9 +180,8 @@ export default function SkillsClient() {
                     <MotionWrapper
                         className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8"
                         variants={containerVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
+                        initial="visible"
+                        animate="visible"
                     >
                         {skillsData.map((skill) => (
                             <SkillSection key={skill.title} {...skill} />
@@ -223,39 +225,41 @@ export default function SkillsClient() {
                         className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8"
                         variants={containerVariants}
                         initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
+                        animate="visible"
                     >
                         {[
                             {
                                 icon: "🔧",
                                 title: "開發工具",
                                 description: "Git, GitHub, VS Code, IntelliJ IDEA",
-                                color: "blue"
+                                color: "amber"
                             },
                             {
                                 icon: "🗄️",
                                 title: "資料庫",
                                 description: "MySQL, PostgreSQL, Firebase, MongoDB",
-                                color: "green"
+                                color: "emerald"
                             },
                             {
                                 icon: "🏆",
                                 title: "競賽經驗",
                                 description: "技藝競賽優勝, AI競賽佳作, 資安競賽冠軍",
-                                color: "yellow"
+                                color: "orange"
                             },
                             {
                                 icon: "👥",
                                 title: "團隊協作",
                                 description: "社團領導, 專案管理, 協作開發",
-                                color: "red"
+                                color: "rose"
                             }
                         ].map((item) => (
                             <MotionWrapper
                                 key={item.title}
                                 className="text-center bg-white/70 dark:bg-gray-700/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-600/50"
                                 variants={itemVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, amount: 0.05 }}
                                 whileHover={{ y: -8, scale: 1.02 }}
                                 transition={{ type: "spring", stiffness: 300 }}
                             >

@@ -38,11 +38,11 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-rose-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden">
       {/* 背景裝飾元素 */}
       <div className="absolute inset-0 overflow-hidden">
         <MotionWrapper
-          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 blur-3xl"
+          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-amber-200 to-rose-200 rounded-full opacity-30 blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             rotate: [0, 180, 360],
@@ -54,7 +54,7 @@ export default function Home() {
           }}
         />
         <MotionWrapper
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-pink-400 to-yellow-400 rounded-full opacity-20 blur-3xl"
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-orange-300 to-rose-400 rounded-full opacity-20 blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
             rotate: [360, 180, 0],
@@ -79,13 +79,13 @@ export default function Home() {
         >
           <MotionWrapper className="mb-8" variants={itemVariants}>
             <MotionWrapper
-              className="w-32 h-32 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full mx-auto mb-6 flex items-center justify-center relative animate-gradient"
+              className="w-32 h-32 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 rounded-full mx-auto mb-6 flex items-center justify-center relative shadow-lg shadow-rose-200/40"
               animate={floatingAnimation}
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
             >
               <span className="text-4xl font-bold text-white drop-shadow-lg">張</span>
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-50 blur-xl animate-pulse" />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-500 to-rose-500 opacity-50 blur-xl" />
             </MotionWrapper>
           </MotionWrapper>
 
@@ -97,7 +97,7 @@ export default function Home() {
             嗨！我是{" "}
             <MotionWrapper
               type="span"
-              className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient whitespace-nowrap"
+              className="bg-gradient-to-r from-amber-600 via-orange-500 to-rose-500 bg-clip-text text-transparent whitespace-nowrap font-bold"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
@@ -113,7 +113,7 @@ export default function Home() {
             Hi! I&apos;m{" "}
             <MotionWrapper
               type="span"
-              className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient whitespace-nowrap"
+              className="bg-gradient-to-r from-amber-600 via-orange-500 to-rose-500 bg-clip-text text-transparent whitespace-nowrap font-bold"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
@@ -147,7 +147,7 @@ export default function Home() {
             >
               <Link
                 href="/projects"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl inline-block"
+                className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 shadow-lg shadow-orange-200/60 hover:shadow-orange-300/70 inline-block"
               >
                 查看我的作品
               </Link>
@@ -178,7 +178,7 @@ export default function Home() {
           <MotionWrapper
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center text-gray-400"
+            className="flex flex-col items-center text-amber-500"
           >
             <span className="text-sm mb-2">探索更多</span>
             <ChevronDownIcon className="w-6 h-6" />
@@ -212,32 +212,36 @@ export default function Home() {
                 icon: "👨‍💻",
                 title: "關於我",
                 description: "了解我的背景與故事",
-                gradient: "from-blue-500 to-blue-600",
-                bgColor: "bg-blue-100 dark:bg-blue-900"
+                bgColor: "bg-amber-100 dark:bg-amber-900/40",
+                accent: "from-amber-500 to-orange-500",
+                hoverText: "group-hover:text-amber-600 dark:group-hover:text-amber-400"
               },
               {
                 href: "/skills",
                 icon: "🛠️",
                 title: "技能專長",
                 description: "查看我的技術能力",
-                gradient: "from-green-500 to-green-600",
-                bgColor: "bg-green-100 dark:bg-green-900"
+                bgColor: "bg-emerald-100 dark:bg-emerald-900/40",
+                accent: "from-emerald-500 to-teal-500",
+                hoverText: "group-hover:text-emerald-600 dark:group-hover:text-emerald-400"
               },
               {
                 href: "/projects",
                 icon: "🚀",
                 title: "精選專案",
                 description: "探索我的作品集",
-                gradient: "from-purple-500 to-purple-600",
-                bgColor: "bg-purple-100 dark:bg-purple-900"
+                bgColor: "bg-orange-100 dark:bg-orange-900/40",
+                accent: "from-orange-500 to-amber-500",
+                hoverText: "group-hover:text-orange-600 dark:group-hover:text-orange-400"
               },
               {
                 href: "/contact",
                 icon: "📬",
                 title: "聯絡我",
                 description: "讓我們開始合作",
-                gradient: "from-yellow-500 to-orange-500",
-                bgColor: "bg-yellow-100 dark:bg-yellow-900"
+                bgColor: "bg-rose-100 dark:bg-rose-900/40",
+                accent: "from-rose-500 to-orange-500",
+                hoverText: "group-hover:text-rose-600 dark:group-hover:text-rose-400"
               }
             ].map((item, index) => (
               <MotionWrapper
@@ -260,14 +264,14 @@ export default function Home() {
                   >
                     <span className="text-3xl">{item.icon}</span>
                   </MotionWrapper>
-                  <h4 className="text-xl font-semibold text-gray-800 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  <h4 className={`text-xl font-semibold text-gray-800 dark:text-white mb-3 transition-colors ${item.hoverText}`}>
                     {item.title}
                   </h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                     {item.description}
                   </p>
                   <MotionWrapper
-                    className={`mt-4 h-1 bg-gradient-to-r ${item.gradient} rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
+                    className={`mt-4 h-1 bg-gradient-to-r ${item.accent} rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
                   />
                 </Link>
               </MotionWrapper>

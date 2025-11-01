@@ -32,7 +32,7 @@ export default function Header() {
                 >
                     <Link
                         href="/"
-                        className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-pink-600 transition-all duration-300"
+                        className="text-2xl font-bold text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300"
                     >
                         張睿恩 (Rui-En Zhang)
                     </Link>
@@ -50,13 +50,13 @@ export default function Header() {
                         >
                             <Link
                                 href={item.href}
-                                className={`relative text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium ${pathname === item.href ? 'text-blue-600 dark:text-blue-400' : ''
+                                className={`relative text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium ${pathname === item.href ? 'text-gray-900 dark:text-white font-semibold' : ''
                                     }`}
                             >
                                 {item.label}
                                 {pathname === item.href && (
                                     <MotionWrapper
-                                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"
+                                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gray-800 dark:bg-white rounded-full"
                                         layoutId="activeTab"
                                         initial={false}
                                         transition={{ type: "spring", stiffness: 500, damping: 30 }}
@@ -70,7 +70,7 @@ export default function Header() {
                 {/* Mobile Menu Button */}
                 <MotionWrapper
                     type="button"
-                    className="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    className="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
@@ -99,7 +99,7 @@ export default function Header() {
                         >
                             <Link
                                 href={item.href}
-                                className={`block py-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium ${pathname === item.href ? 'text-blue-600 dark:text-blue-400' : ''
+                                className={`block py-3 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium ${pathname === item.href ? 'text-gray-900 dark:text-white font-semibold' : ''
                                     }`}
                                 onClick={() => setIsMenuOpen(false)}
                             >

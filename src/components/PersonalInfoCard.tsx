@@ -19,7 +19,7 @@ export default function PersonalInfoCard({ personalInfo }: PersonalInfoCardProps
     return (
         <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 p-6 rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-600/50 hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out">
             <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4 flex items-center">
-                <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                <span className="w-2 h-2 bg-gray-600 dark:bg-gray-400 rounded-full mr-2"></span>
                 基本資料
             </h3>
             <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-600 dark:text-gray-300">

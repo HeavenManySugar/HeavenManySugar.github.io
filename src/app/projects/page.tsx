@@ -99,14 +99,13 @@ export default function ProjectsClient() {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 relative overflow-hidden">
+        <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-rose-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden">
             {/* 背景裝飾 */}
             <div className="absolute inset-0 overflow-hidden">
                 <MotionWrapper
-                    className="absolute -top-40 -right-40 w-80 h-80 bg-blue-400 rounded-full opacity-10"
+                    className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-amber-200 to-rose-200 rounded-full opacity-30 blur-3xl"
                     animate={{
-                        scale: [1, 1.3, 1],
-                        opacity: [0.1, 0.3, 0.1],
+                        scale: [1, 1.2, 1],
                         rotate: [0, 180, 360],
                     }}
                     transition={{
@@ -116,10 +115,9 @@ export default function ProjectsClient() {
                     }}
                 />
                 <MotionWrapper
-                    className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-400 rounded-full opacity-10"
+                    className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-orange-300 to-rose-400 rounded-full opacity-20 blur-3xl"
                     animate={{
-                        scale: [1.3, 1, 1.3],
-                        opacity: [0.3, 0.1, 0.3],
+                        scale: [1.2, 1, 1.2],
                         rotate: [360, 180, 0],
                     }}
                     transition={{
@@ -167,7 +165,7 @@ export default function ProjectsClient() {
                             transition={{ duration: 0.6, delay: 0.6 }}
                         >
                             <MotionWrapper
-                                className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                                className="w-24 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full"
                                 animate={{
                                     width: [96, 120, 96],
                                     opacity: [0.8, 1, 0.8],
@@ -239,22 +237,22 @@ export default function ProjectsClient() {
                                     {
                                         value: featuredProjects.length + smallProjects.length,
                                         label: "完成專案",
-                                        color: "text-blue-600 dark:text-blue-400"
+                                        color: "text-amber-600 dark:text-amber-400"
                                     },
                                     {
                                         value: Array.from(new Set([...featuredProjects, ...smallProjects].flatMap(p => p.technologies))).length,
                                         label: "使用技術",
-                                        color: "text-purple-600 dark:text-purple-400"
+                                        color: "text-orange-600 dark:text-orange-400"
                                     },
                                     {
                                         value: featuredProjects.length,
                                         label: "精選專案",
-                                        color: "text-green-600 dark:text-green-400"
+                                        color: "text-emerald-600 dark:text-emerald-400"
                                     },
                                     {
                                         value: smallProjects.length,
                                         label: "小專案",
-                                        color: "text-orange-600 dark:text-orange-400"
+                                        color: "text-rose-600 dark:text-rose-400"
                                     }
                                 ].map((stat, index) => (
                                     <MotionWrapper

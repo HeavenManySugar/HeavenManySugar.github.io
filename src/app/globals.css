@@ -3,12 +3,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  --gradient-1: linear-gradient(135deg, #4b5563 0%, #626d7f 100%);
+  --gradient-2: linear-gradient(135deg, #ea8c55 0%, #d97d5f 100%);
+  --gradient-3: linear-gradient(135deg, #b8860b 0%, #daa520 100%);
+  --gradient-4: linear-gradient(135deg, #6d8e63 0%, #7caf8a 100%);
   --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.1);
-  --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.3);
+  --shadow-glow: 0 0 20px rgba(107, 114, 128, 0.3);
 }
 
 @theme inline {
@@ -23,7 +23,7 @@
     --background: #0a0a0a;
     --foreground: #ededed;
     --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.3);
-    --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.5);
+    --shadow-glow: 0 0 20px rgba(107, 114, 128, 0.5);
   }
 }
 
@@ -168,10 +168,10 @@ noscript * {
 
 @keyframes subtle-glow {
   0%, 100% {
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 10px rgba(107, 114, 128, 0.3);
   }
   50% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 20px rgba(107, 114, 128, 0.5);
   }
 }
 
@@ -289,12 +289,12 @@ noscript * {
 
 /* 美化文字選取 */
 ::selection {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4b5563 0%, #626d7f 100%);
   color: white;
 }
 
 ::-moz-selection {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4b5563 0%, #626d7f 100%);
   color: white;
 }
 
@@ -367,7 +367,7 @@ noscript * {
   inset: 0;
   border-radius: inherit;
   padding: 2px;
-  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+  background: linear-gradient(45deg, #4b5563, #626d7f, #ea8c55, #d97d5f);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: xor;
   opacity: 0;
@@ -381,7 +381,7 @@ noscript * {
 /* 文字打字機效果 */
 .typewriter {
   overflow: hidden;
-  border-right: 3px solid #667eea;
+  border-right: 3px solid #4b5563;
   white-space: nowrap;
   animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
 }
@@ -393,7 +393,7 @@ noscript * {
 
 @keyframes blink-caret {
   from, to { border-color: transparent; }
-  50% { border-color: #667eea; }
+  50% { border-color: #4b5563; }
 }
 
 /* 磁性懸浮效果 */

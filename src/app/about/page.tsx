@@ -31,11 +31,11 @@ const PERSONAL_INFO = {
 
 /** 專業領域標籤 */
 const PROFESSIONAL_AREAS = [
-    { label: "Frontend Development", color: "blue" },
+    { label: "Frontend Development", color: "gray" },
     { label: "Backend Development", color: "green" },
-    { label: "Mobile Development", color: "purple" },
-    { label: "AI & Machine Learning", color: "orange" },
-    { label: "UI/UX Design", color: "pink" }
+    { label: "Mobile Development", color: "orange" },
+    { label: "AI & Machine Learning", color: "yellow" },
+    { label: "UI/UX Design", color: "brown" }
 ] as const;
 
 /** 自傳段落內容 */
@@ -51,7 +51,7 @@ const EDUCATION_DATA = [
     {
         id: "university",
         icon: "🏫",
-        bgColor: "blue",
+        bgColor: "gray",
         institution: "國立臺北科技大學",
         department: "資訊工程學系",
         period: "2021-2025",
@@ -77,7 +77,7 @@ const UNIVERSITY_AWARDS = [
         award: "佳作",
         ranking: "第9名 / 934隊 (PR99)",
         description: "運用機器學習技術預測發電量，在近千支隊伍中脫穎而出，展現優異的AI技術應用能力",
-        borderColor: "blue"
+        borderColor: "gray"
     }
 ] as const;
 
@@ -110,7 +110,7 @@ const OTHER_ACHIEVEMENTS = [
         title: "網頁設計社副社長",
         subtitle: "臺南高工 網頁設計社",
         description: "領導社團活動，培養團隊合作與溝通能力",
-        borderColor: "purple"
+        borderColor: "orange"
     },
     {
         emoji: "📚",
@@ -125,8 +125,8 @@ const OTHER_ACHIEVEMENTS = [
 const TECH_DEVELOPMENT_STAGES = [
     {
         icon: "⚛️",
-        bgColor: "blue",
-        borderColor: "blue-500",
+        bgColor: "gray",
+        borderColor: "gray-500",
         title: "前端開發能力",
         description: "深入學習現代前端開發技術棧，從基礎的HTML/CSS/JavaScript到React生態系，專注於組件化開發、狀態管理和性能優化。掌握Next.js全端框架，能夠開發SEO友好的現代網頁應用。",
         skills: ["React", "Next.js", "TypeScript", "Tailwind CSS"]
@@ -141,16 +141,16 @@ const TECH_DEVELOPMENT_STAGES = [
     },
     {
         icon: "🎨",
-        bgColor: "purple",
-        borderColor: "purple-500",
+        bgColor: "orange",
+        borderColor: "orange-500",
         title: "設計思維培養",
         description: "深入學習UI/UX設計原則，注重使用者體驗研究與互動設計。熟悉設計工具使用，能夠從設計角度思考產品開發，讓技術實現與視覺設計完美結合。",
         skills: ["Figma", "Design System", "User Research", "Prototyping"]
     },
     {
         icon: "🤖",
-        bgColor: "orange",
-        borderColor: "orange-500",
+        bgColor: "yellow",
+        borderColor: "yellow-500",
         title: "人工智慧探索",
         description: "透過參與AI競賽深入學習機器學習與深度學習技術，了解AI在實際應用中的潛力。持續關注最新的AI發展趨勢，探索AI與傳統軟體開發的結合點。",
         skills: ["Python", "Machine Learning", "TensorFlow", "Data Analysis"]
@@ -163,11 +163,11 @@ const TECH_DEVELOPMENT_STAGES = [
  */
 function AboutMeSection() {
     return (
-        <section className="py-20 bg-white dark:bg-gray-800 relative overflow-hidden">
+        <section className="py-20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm relative overflow-hidden">
             {/* 裝飾性背景元素 */}
             <div className="absolute inset-0">
-                <div className="absolute top-10 left-10 w-72 h-72 bg-blue-200/30 dark:bg-blue-800/20 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-10 right-10 w-96 h-96 bg-purple-200/30 dark:bg-purple-800/20 rounded-full blur-3xl"></div>
+                <div className="absolute top-10 left-10 w-72 h-72 bg-amber-200/20 dark:bg-amber-700/20 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-10 right-10 w-96 h-96 bg-orange-200/20 dark:bg-orange-700/20 rounded-full blur-3xl"></div>
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
@@ -206,11 +206,11 @@ function AboutMeSection() {
  */
 function EducationAndAchievementsSection() {
     return (
-        <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50/50 to-purple-50/50 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/20 relative overflow-hidden">
+        <section className="py-20 bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm relative overflow-hidden">
             {/* 裝飾性幾何圖形 */}
             <div className="absolute inset-0">
-                <div className="absolute top-1/4 left-1/4 w-32 h-32 border-2 border-blue-200/30 dark:border-blue-700/30 rounded-lg rotate-45"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-24 h-24 border-2 border-purple-200/30 dark:border-purple-700/30 rounded-full"></div>
+                <div className="absolute top-1/4 left-1/4 w-32 h-32 border-2 border-amber-200/30 dark:border-amber-700/30 rounded-lg rotate-45"></div>
+                <div className="absolute bottom-1/4 right-1/4 w-24 h-24 border-2 border-orange-200/30 dark:border-orange-700/30 rounded-full"></div>
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
@@ -235,7 +235,7 @@ function EducationAndAchievementsSection() {
 
                         {/* 大學階段獲獎 */}
                         <div className="mb-12">
-                            <div className={`bg-gradient-to-r from-blue-100 to-blue-50 dark:from-blue-900/40 dark:to-blue-800/20 p-6 rounded-2xl ${getFadeInAnimation('up', 600)}`}>
+                            <div className={`bg-white dark:bg-gray-800 p-6 rounded-2xl ${getFadeInAnimation('up', 600)}`}>
                                 <h4 className="text-2xl font-semibold text-gray-800 dark:text-white mb-6 text-center">
                                     🎓 大學階段
                                 </h4>
@@ -251,7 +251,7 @@ function EducationAndAchievementsSection() {
 
                         {/* 高中階段獲獎 */}
                         <div className="mb-12">
-                            <div className={`bg-gradient-to-r from-green-100 to-green-50 dark:from-green-900/40 dark:to-green-800/20 p-6 rounded-2xl ${getFadeInAnimation('up', 1000)}`}>
+                            <div className={`bg-gradient-to-r from-emerald-100 to-emerald-50 dark:from-emerald-900/40 dark:to-emerald-800/20 p-6 rounded-2xl ${getFadeInAnimation('up', 1000)}`}>
                                 <h4 className="text-2xl font-semibold text-gray-800 dark:text-white mb-6 text-center">
                                     🏫 高中階段
                                 </h4>
@@ -266,7 +266,7 @@ function EducationAndAchievementsSection() {
                         </div>
 
                         {/* 其他成就 */}
-                        <div className={`bg-gradient-to-r from-purple-100 to-purple-50 dark:from-purple-900/40 dark:to-purple-800/20 p-6 rounded-2xl ${getFadeInAnimation('up', 1400)}`}>
+                        <div className={`bg-white dark:bg-gray-800 p-6 rounded-2xl ${getFadeInAnimation('up', 1400)}`}>
                             <h4 className="text-2xl font-semibold text-gray-800 dark:text-white mb-6 text-center">
                                 🌟 其他成就
                             </h4>
@@ -291,7 +291,7 @@ function EducationAndAchievementsSection() {
  */
 function TechDevelopmentSection() {
     return (
-        <section className="py-20 bg-white dark:bg-gray-800 relative overflow-hidden">
+        <section className="py-20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm relative overflow-hidden">
             {/* 動態背景網格 */}
             <div className="absolute inset-0 opacity-5 dark:opacity-10">
                 <div className="grid grid-cols-12 h-full">
@@ -302,7 +302,7 @@ function TechDevelopmentSection() {
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
-                <h2 className={`text-4xl font-bold text-center bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-16 ${getFadeInAnimation('up', 0)}`}>
+                <h2 className={`text-4xl font-bold text-center text-gray-800 dark:text-white mb-16 ${getFadeInAnimation('up', 0)}`}>
                     🚀 技術發展歷程
                 </h2>
                 <div className="max-w-4xl mx-auto">
@@ -315,7 +315,7 @@ function TechDevelopmentSection() {
                     </div>
 
                     {/* 持續學習理念 */}
-                    <div className={`mt-16 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-900/30 dark:via-indigo-900/30 dark:to-purple-900/30 p-12 rounded-3xl border border-blue-200/50 dark:border-blue-700/50 shadow-2xl relative overflow-hidden ${getFadeInAnimation('up', 1200)}`}>
+                    <div className={`mt-16 bg-white dark:bg-gray-800 p-12 rounded-3xl border border-amber-200/50 dark:border-amber-700/50 shadow-2xl relative overflow-hidden ${getFadeInAnimation('up', 1200)}`}>
                         {/* 裝飾性元素 */}
                         <div className="absolute top-4 right-4 text-4xl opacity-20">💡</div>
                         <div className="absolute bottom-4 left-4 text-3xl opacity-20">🌱</div>
@@ -357,12 +357,12 @@ function TechDevelopmentSection() {
  */
 export default function About() {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 relative overflow-hidden">
+        <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-rose-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden">
             {/* 全域裝飾性背景 */}
             <div className="fixed inset-0 -z-10">
-                <div className="absolute top-1/4 left-1/6 w-64 h-64 bg-blue-300/10 dark:bg-blue-600/10 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-1/4 right-1/6 w-80 h-80 bg-purple-300/10 dark:bg-purple-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-300/5 dark:bg-indigo-600/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+                <div className="absolute top-1/4 left-1/6 w-64 h-64 bg-amber-300/10 dark:bg-amber-600/10 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-1/4 right-1/6 w-80 h-80 bg-rose-300/10 dark:bg-rose-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-orange-300/5 dark:bg-orange-600/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
             </div>
 
             <Header />

@@ -35,7 +35,7 @@ export default function ClientOnlyBuildInfo({ buildTime, shortCommitHash, branch
                                 href={`https://github.com/HeavenManySugar/HeavenManySugar.github.io/tree/${branchName}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="font-mono text-gray-400 hover:text-blue-400 hover:underline transition-colors"
+                                className="font-mono text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:underline transition-colors"
                             >
                                 {branchName}
                             </a>
@@ -66,7 +66,7 @@ export default function ClientOnlyBuildInfo({ buildTime, shortCommitHash, branch
                             href={`https://github.com/HeavenManySugar/HeavenManySugar.github.io/tree/${branchName}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="font-mono text-gray-400 hover:text-blue-400 hover:underline transition-colors"
+                            className="font-mono text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:underline transition-colors"
                         >
                             {branchName}
                         </a>

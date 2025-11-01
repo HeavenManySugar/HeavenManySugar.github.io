@@ -27,7 +27,7 @@ export default function EducationCard({ education }: EducationCardProps) {
                     <span className="text-2xl group-hover:animate-bounce">{education.icon}</span>
                 </div>
                 <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                    <h3 className="text-lg font-semibold text-gray-800 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-200">
                         {education.institution}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">

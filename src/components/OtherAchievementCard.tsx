@@ -26,7 +26,7 @@ export default function OtherAchievementCard({ achievement }: OtherAchievementCa
             <div className="flex items-start relative z-10">
                 <span className="text-3xl mr-4 group-hover:scale-125 group-hover:animate-bounce transition-all duration-300">{achievement.emoji}</span>
                 <div className="flex-1">
-                    <h5 className="text-lg font-semibold text-gray-800 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                    <h5 className="text-lg font-semibold text-gray-800 dark:text-white mb-2 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-200">
                         {achievement.title}
                     </h5>
                     <p className={`text-sm mb-3 font-medium ${getColorClasses.accent(achievement.borderColor)}`}>

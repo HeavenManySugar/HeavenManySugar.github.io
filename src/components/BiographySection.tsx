@@ -9,9 +9,9 @@ interface BiographySectionProps {
 
 export default function BiographySection({ paragraphs }: BiographySectionProps) {
     return (
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-6 rounded-xl border border-blue-200/30 dark:border-blue-700/30 hover:shadow-lg transition-all duration-300">
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-md transition-all duration-300">
             <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4 flex items-center">
-                <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                <span className="w-2 h-2 bg-gray-600 dark:bg-gray-400 rounded-full mr-2"></span>
                 自傳
             </h3>
             <div className="space-y-4">

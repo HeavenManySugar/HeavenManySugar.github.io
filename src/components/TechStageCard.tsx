@@ -29,7 +29,7 @@ export default function TechStageCard({ stage }: TechStageCardProps) {
                     <span className="text-3xl group-hover:animate-pulse">{stage.icon}</span>
                 </div>
                 <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-200">
                         {stage.title}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">

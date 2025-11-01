@@ -63,23 +63,23 @@ interface ProjectCardProps {
 const getTechColor = (tech: string) => {
     const colorMap: { [key: string]: string } = {
         'Next.js': 'bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200',
-        'React': 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200',
-        'TypeScript': 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200',
+        'React': 'bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200',
+        'TypeScript': 'bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200',
         'Tailwind CSS': 'bg-cyan-100 dark:bg-cyan-900 text-cyan-800 dark:text-cyan-200',
-        'C#': 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200',
+        'C#': 'bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200',
         'MSSQL': 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200',
-        'C++': 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200',
+        'C++': 'bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200',
         'CMake': 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200',
         'Git': 'bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200',
-        'Kotlin': 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200',
+        'Kotlin': 'bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200',
         'Jetpack Compose': 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200',
         'Firebase': 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200',
         'daisyUI': 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200',
         'Python': 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200',
-        'LangChain': 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200',
-        'Ollama': 'bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200',
-        'SwiftUI': 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200',
-        'AI': 'bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200'
+        'LangChain': 'bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200',
+        'Ollama': 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200',
+        'SwiftUI': 'bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200',
+        'AI': 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
     };
     return colorMap[tech] || 'bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200';
 };
