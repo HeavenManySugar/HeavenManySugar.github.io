@@ -1,37 +1,65 @@
 @import "tailwindcss";
 
 :root {
+  /* HIG 色彩系統 */
   --background: #ffffff;
-  --foreground: #171717;
-  --gradient-1: linear-gradient(135deg, #4b5563 0%, #626d7f 100%);
-  --gradient-2: linear-gradient(135deg, #ea8c55 0%, #d97d5f 100%);
-  --gradient-3: linear-gradient(135deg, #b8860b 0%, #daa520 100%);
-  --gradient-4: linear-gradient(135deg, #6d8e63 0%, #7caf8a 100%);
-  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.1);
-  --shadow-glow: 0 0 20px rgba(107, 114, 128, 0.3);
+  --foreground: #1d1d1f;
+  --secondary: #f5f5f7;
+  --tertiary: #e5e5e7;
+  
+  /* 語義色 */
+  --blue-primary: #007aff;
+  --blue-hover: #0051d5;
+  --blue-light: #e8f4ff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-700: #374151;
+  --gray-900: #111827;
+  
+  /* 陰影系統 */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  
+  /* 圓角 - HIG 標準 */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'SF Pro Display', 'Helvetica Neue', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.3);
-    --shadow-glow: 0 0 20px rgba(107, 114, 128, 0.5);
+    --background: #000000;
+    --foreground: #f5f5f7;
+    --secondary: #1d1d1f;
+    --tertiary: #3a3a3c;
+    
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.2);
   }
+}
+
+* {
+  @apply transition-colors duration-200;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-sans);
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* 確保在沒有 JavaScript 的情況下內容可見 */
@@ -43,108 +71,94 @@ body {
   }
 }
 
-/* 在 noscript 環境下確保內容可見 */
-noscript * {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: none !important;
+/* 無障礙支援 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-/* 進階動畫效果 */
-@keyframes fade-in-up {
-  0% {
+/* HIG 動畫系統 */
+@keyframes fade-in {
+  from {
     opacity: 0;
-    transform: translateY(30px);
   }
-  100% {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes fade-in-down {
-  0% {
+@keyframes slide-down {
+  from {
     opacity: 0;
-    transform: translateY(-30px);
+    transform: translateY(-8px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes fade-in-left {
-  0% {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fade-in-right {
-  0% {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes scale-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes float {
+@keyframes subtle-float {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-4px);
   }
 }
 
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: var(--shadow-soft);
+/* 按鈕樣式基礎 - HIG 標準 */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
   }
-  50% {
-    box-shadow: var(--shadow-glow);
-  }
-}
 
-@keyframes gradient-shift {
-  0%, 100% {
-    background-position: 0% 50%;
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
   }
-  50% {
-    background-position: 100% 50%;
-  }
-}
 
-@keyframes gradient-xy {
-  0%, 100% {
-    background-position: 0% 50%;
+  .btn-tertiary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
   }
-  25% {
-    background-position: 100% 50%;
+
+  /* 卡片樣式 - HIG 標準 */
+  .card {
+    @apply rounded-lg bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow duration-200;
   }
-  50% {
-    background-position: 100% 100%;
+
+  /* 文字樣式 */
+  .text-title-1 {
+    @apply text-4xl font-bold tracking-tight;
   }
-  75% {
-    background-position: 0% 100%;
+
+  .text-title-2 {
+    @apply text-3xl font-bold tracking-tight;
+  }
+
+  .text-title-3 {
+    @apply text-2xl font-semibold;
+  }
+
+  .text-body {
+    @apply text-base leading-relaxed;
+  }
+
+  .text-caption {
+    @apply text-sm text-gray-600 dark:text-gray-400;
   }
 }
 

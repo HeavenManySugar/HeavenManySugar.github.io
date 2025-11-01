@@ -20,95 +20,95 @@ export default function Header() {
     return (
         <MotionWrapper
             type="header"
-            className="container mx-auto px-6 py-8 relative z-50"
+            className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-black/80 border-b border-gray-200 dark:border-gray-800"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
         >
-            <nav className="flex justify-between items-center">
-                <MotionWrapper
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                >
-                    <Link
-                        href="/"
-                        className="text-2xl font-bold text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300"
+            <div className="container mx-auto px-6 lg:px-8 py-4">
+                <nav className="flex justify-between items-center">
+                    {/* Logo */}
+                    <MotionWrapper
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
                     >
-                        張睿恩 (Rui-En Zhang)
-                    </Link>
-                </MotionWrapper>
-
-                {/* Desktop Navigation */}
-                <div className="hidden md:flex space-x-8">
-                    {navItems.map((item, index) => (
-                        <MotionWrapper
-                            key={item.href}
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                            whileHover={{ y: -2 }}
+                        <Link
+                            href="/"
+                            className="text-lg font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                         >
-                            <Link
-                                href={item.href}
-                                className={`relative text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium ${pathname === item.href ? 'text-gray-900 dark:text-white font-semibold' : ''
-                                    }`}
-                            >
-                                {item.label}
-                                {pathname === item.href && (
-                                    <MotionWrapper
-                                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gray-800 dark:bg-white rounded-full"
-                                        layoutId="activeTab"
-                                        initial={false}
-                                        transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                                    />
-                                )}
-                            </Link>
-                        </MotionWrapper>
-                    ))}
-                </div>
+                            ZRE
+                        </Link>
+                    </MotionWrapper>
 
-                {/* Mobile Menu Button */}
+                    {/* Desktop Navigation */}
+                    <div className="hidden md:flex space-x-1">
+                        {navItems.map((item, index) => (
+                            <MotionWrapper
+                                key={item.href}
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4, delay: index * 0.05 }}
+                            >
+                                <Link
+                                    href={item.href}
+                                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                                        pathname === item.href
+                                            ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/30'
+                                            : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                                    }`}
+                                >
+                                    {item.label}
+                                </Link>
+                            </MotionWrapper>
+                        ))}
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <MotionWrapper
+                        type="button"
+                        className="md:hidden p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    >
+                        {isMenuOpen ? (
+                            <XMarkIcon className="w-6 h-6" />
+                        ) : (
+                            <Bars3Icon className="w-6 h-6" />
+                        )}
+                    </MotionWrapper>
+                </nav>
+
+                {/* Mobile Navigation */}
                 <MotionWrapper
-                    type="button"
-                    className="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: isMenuOpen ? 1 : 0, height: isMenuOpen ? 'auto' : 0 }}
+                    transition={{ duration: 0.3 }}
                 >
-                    {isMenuOpen ? (
-                        <XMarkIcon className="w-6 h-6" />
-                    ) : (
-                        <Bars3Icon className="w-6 h-6" />
-                    )}
-                </MotionWrapper>
-            </nav>
-
-            {/* Mobile Navigation */}
-            <MotionWrapper
-                className={`md:hidden mt-4 ${isMenuOpen ? 'block' : 'hidden'}`}
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: isMenuOpen ? 1 : 0, height: isMenuOpen ? 'auto' : 0 }}
-                transition={{ duration: 0.3 }}
-            >
-                <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-200/50 dark:border-gray-700/50">
-                    {navItems.map((item, index) => (
-                        <MotionWrapper
-                            key={item.href}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.3, delay: index * 0.1 }}
-                        >
-                            <Link
-                                href={item.href}
-                                className={`block py-3 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium ${pathname === item.href ? 'text-gray-900 dark:text-white font-semibold' : ''
-                                    }`}
-                                onClick={() => setIsMenuOpen(false)}
+                    <div className="mt-4 space-y-1">
+                        {navItems.map((item, index) => (
+                            <MotionWrapper
+                                key={item.href}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.2, delay: index * 0.05 }}
                             >
-                                {item.label}
-                            </Link>
-                        </MotionWrapper>
-                    ))}
-                </div>
-            </MotionWrapper>
+                                <Link
+                                    href={item.href}
+                                    className={`block px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                                        pathname === item.href
+                                            ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/30'
+                                            : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                                    }`}
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    {item.label}
+                                </Link>
+                            </MotionWrapper>
+                        ))}
+                    </div>
+                </MotionWrapper>
+            </div>
         </MotionWrapper>
     );
 }
