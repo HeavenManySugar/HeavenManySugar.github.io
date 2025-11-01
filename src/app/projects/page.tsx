@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProjectSection from "@/components/ProjectSection";
-import MotionWrapper from "@/components/MotionWrapper";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,9 +17,7 @@ export default function ProjectsClient() {
             technologies: ["Next.js", "Tailwind CSS", "TypeScript"],
             projectUrl: "https://zre.tw",
             githubUrl: "https://github.com/HeavenManySugar/HeavenManySugar.github.io",
-            icon: "🌐",
-            gradientFrom: "from-blue-400",
-            gradientTo: "to-purple-500"
+            icon: "🌐"
         },
         {
             title: "電商平台",
@@ -28,9 +25,7 @@ export default function ProjectsClient() {
             technologies: ["React", "C#", "MSSQL"],
             projectUrl: "https://ootd.ruien.me/",
             githubUrl: "https://github.com/HeavenManySugar/OOTD-FullStack",
-            icon: "🛒",
-            gradientFrom: "from-purple-400",
-            gradientTo: "to-pink-500"
+            icon: "🛒"
         },
         {
             title: "節奏地牢(Clone模仿)",
@@ -38,9 +33,7 @@ export default function ProjectsClient() {
             technologies: ["C++", "CMake", "Git"],
             projectUrl: "https://github.com/NTUT-FUCK-PTSD/Fuck-PTSD/releases/tag/v1.0.6",
             githubUrl: "https://github.com/NTUT-FUCK-PTSD/Fuck-PTSD",
-            icon: "🎮",
-            gradientFrom: "from-orange-400",
-            gradientTo: "to-red-500"
+            icon: "🎮"
         },
         {
             title: "交友軟體",
@@ -48,9 +41,7 @@ export default function ProjectsClient() {
             technologies: ["Kotlin", "Jetpack Compose", "Firebase"],
             projectUrl: "https://www.canva.com/design/DAGp2popNs0/Twi5BEsI5Epvt6VyvC_yMQ/view?utm_content=DAGp2popNs0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h4ffa896248",
             githubUrl: "https://github.com/HeavenManySugar/NTUT-MADD-Final",
-            icon: "💬",
-            gradientFrom: "from-teal-400",
-            gradientTo: "to-green-500"
+            icon: "💬"
         }
     ];
 
@@ -62,9 +53,7 @@ export default function ProjectsClient() {
             technologies: ["Next.js"],
             projectUrl: "https://zre.tw/tts-web",
             githubUrl: "https://github.com/HeavenManySugar/tts-web",
-            icon: "🔊",
-            gradientFrom: "from-indigo-400",
-            gradientTo: "to-purple-500"
+            icon: "🔊"
         },
         {
             title: "Isolate React 配置工具",
@@ -72,9 +61,7 @@ export default function ProjectsClient() {
             technologies: ["Next.js", "daisyUI"],
             projectUrl: "https://zre.tw/isolate-react",
             githubUrl: "https://github.com/HeavenManySugar/isolate-react",
-            icon: "🛡️",
-            gradientFrom: "from-pink-400",
-            gradientTo: "to-red-500"
+            icon: "🛡️"
         },
         {
             title: "員工訓練與管理平台",
@@ -82,9 +69,7 @@ export default function ProjectsClient() {
             technologies: ["Python", "LangChain", "Ollama"],
             projectUrl: "https://github.com/Bryan-Eva/ETKMP",
             githubUrl: "https://github.com/Bryan-Eva/ETKMP",
-            icon: "🏢",
-            gradientFrom: "from-emerald-400",
-            gradientTo: "to-teal-500"
+            icon: "🏢"
         },
         {
             title: "Todolist",
@@ -92,199 +77,87 @@ export default function ProjectsClient() {
             technologies: ["SwiftUI", "Firebase", "AI"],
             projectUrl: "https://www.canva.com/design/DAGqheO54t8/TzX726Eu0ZKVJ-MJrnIgwQ/edit?utm_content=DAGqheO54t8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
             githubUrl: "https://github.com/HeavenManySugar/Todolist",
-            icon: "✅",
-            gradientFrom: "from-amber-400",
-            gradientTo: "to-orange-500"
+            icon: "✅"
         }
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-rose-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden">
-            {/* 背景裝飾 */}
-            <div className="absolute inset-0 overflow-hidden">
-                <MotionWrapper
-                    className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-amber-200 to-rose-200 rounded-full opacity-30 blur-3xl"
-                    animate={{
-                        scale: [1, 1.2, 1],
-                        rotate: [0, 180, 360],
-                    }}
-                    transition={{
-                        duration: 20,
-                        repeat: Infinity,
-                        ease: "linear"
-                    }}
-                />
-                <MotionWrapper
-                    className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-orange-300 to-rose-400 rounded-full opacity-20 blur-3xl"
-                    animate={{
-                        scale: [1.2, 1, 1.2],
-                        rotate: [360, 180, 0],
-                    }}
-                    transition={{
-                        duration: 25,
-                        repeat: Infinity,
-                        ease: "linear"
-                    }}
-                />
-            </div>
-
+        <div className="min-h-screen bg-white dark:bg-gray-950">
             <Header />
 
-            {/* Projects Section */}
-            <section className="py-20 relative z-10">
-                <div className="container mx-auto px-6">
-                    {/* 頁面標題 */}
-                    <MotionWrapper
-                        className="text-center mb-20"
-                        initial={{ opacity: 0, y: -30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <MotionWrapper
-                            type="h1"
-                            className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-6"
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                        >
-                            專案作品集
-                        </MotionWrapper>
-                        <MotionWrapper
-                            type="p"
-                            className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                        >
-                            歡迎瀏覽我的程式開發作品集，這裡展示了我在不同技術領域的專案
-                        </MotionWrapper>
-                        <MotionWrapper
-                            className="mt-8 flex justify-center"
-                            initial={{ opacity: 0, scale: 0 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.6, delay: 0.6 }}
-                        >
-                            <MotionWrapper
-                                className="w-24 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full"
-                                animate={{
-                                    width: [96, 120, 96],
-                                    opacity: [0.8, 1, 0.8],
-                                }}
-                                transition={{
-                                    duration: 3,
-                                    repeat: Infinity,
-                                    ease: "easeInOut"
-                                }}
-                            />
-                        </MotionWrapper>
-                    </MotionWrapper>
+            {/* Hero Section - HIG Design */}
+            <section className="container mx-auto px-6 lg:px-8 py-24 md:py-32 border-b border-gray-200 dark:border-gray-800">
+                <div className="max-w-3xl">
+                    <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                        專案作品集
+                    </h1>
+                    <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+                        歡迎瀏覽我的程式開發作品集，這裡展示了我在不同技術領域的專案經驗和實踐成果。
+                    </p>
+                </div>
+            </section>
 
-                    {/* 精選專案 */}
-                    <MotionWrapper
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        viewport={{ once: true }}
-                    >
-                        <ProjectSection
-                            title="精選專案"
-                            projects={featuredProjects}
-                            size="large"
-                            gridCols="lg:grid-cols-3"
-                        />
-                    </MotionWrapper>
+            {/* 精選專案 */}
+            <section className="py-12">
+                <ProjectSection
+                    title="精選專案"
+                    projects={featuredProjects}
+                    size="large"
+                    gridCols="lg:grid-cols-3"
+                />
+            </section>
 
-                    {/* 小專案 */}
-                    <MotionWrapper
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        viewport={{ once: true }}
-                    >
-                        <ProjectSection
-                            title="小專案"
-                            projects={smallProjects}
-                            size="small"
-                            gridCols="lg:grid-cols-4"
-                        />
-                    </MotionWrapper>
+            {/* 小專案 */}
+            <section className="py-12 bg-gray-50 dark:bg-gray-900/50">
+                <ProjectSection
+                    title="小專案"
+                    projects={smallProjects}
+                    size="small"
+                    gridCols="lg:grid-cols-4"
+                />
+            </section>
 
-                    {/* 技能統計 */}
-                    <MotionWrapper
-                        className="mt-20 text-center"
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        viewport={{ once: true }}
-                    >
-                        <MotionWrapper
-                            className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 border border-white/20 dark:border-gray-700/20 shadow-lg"
-                            whileHover={{ scale: 1.02, y: -5 }}
-                            transition={{ type: "spring", stiffness: 300 }}
+            {/* 技能統計 */}
+            <section className="container mx-auto px-6 lg:px-8 py-24 md:py-32">
+                <div className="text-center mb-12">
+                    <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                        專案統計
+                    </h2>
+                    <p className="text-lg text-gray-600 dark:text-gray-400">
+                        我的開發之旅
+                    </p>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                    {[
+                        {
+                            value: featuredProjects.length + smallProjects.length,
+                            label: "完成專案"
+                        },
+                        {
+                            value: Array.from(new Set([...featuredProjects, ...smallProjects].flatMap(p => p.technologies))).length,
+                            label: "使用技術"
+                        },
+                        {
+                            value: featuredProjects.length,
+                            label: "精選專案"
+                        },
+                        {
+                            value: smallProjects.length,
+                            label: "小專案"
+                        }
+                    ].map((stat) => (
+                        <div
+                            key={stat.label}
+                            className="p-6 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-center transition-all hover:shadow-md hover:border-blue-200 dark:hover:border-blue-900"
                         >
-                            <MotionWrapper
-                                type="h3"
-                                className="text-2xl font-bold text-gray-800 dark:text-white mb-8"
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                transition={{ duration: 0.6, delay: 0.6 }}
-                                viewport={{ once: true }}
-                            >
-                                專案統計
-                            </MotionWrapper>
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                                {[
-                                    {
-                                        value: featuredProjects.length + smallProjects.length,
-                                        label: "完成專案",
-                                        color: "text-amber-600 dark:text-amber-400"
-                                    },
-                                    {
-                                        value: Array.from(new Set([...featuredProjects, ...smallProjects].flatMap(p => p.technologies))).length,
-                                        label: "使用技術",
-                                        color: "text-orange-600 dark:text-orange-400"
-                                    },
-                                    {
-                                        value: featuredProjects.length,
-                                        label: "精選專案",
-                                        color: "text-emerald-600 dark:text-emerald-400"
-                                    },
-                                    {
-                                        value: smallProjects.length,
-                                        label: "小專案",
-                                        color: "text-rose-600 dark:text-rose-400"
-                                    }
-                                ].map((stat, index) => (
-                                    <MotionWrapper
-                                        key={stat.label}
-                                        className="text-center"
-                                        initial={{ opacity: 0, scale: 0.5 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                                        viewport={{ once: true }}
-                                        whileHover={{ scale: 1.1 }}
-                                    >
-                                        <MotionWrapper
-                                            className={`text-3xl font-bold mb-2 ${stat.color}`}
-                                            animate={{
-                                                scale: [1, 1.05, 1],
-                                            }}
-                                            transition={{
-                                                duration: 2,
-                                                repeat: Infinity,
-                                                delay: index * 0.5,
-                                            }}
-                                        >
-                                            {stat.value}
-                                        </MotionWrapper>
-                                        <div className="text-gray-600 dark:text-gray-400 text-sm">
-                                            {stat.label}
-                                        </div>
-                                    </MotionWrapper>
-                                ))}
+                            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                                {stat.value}
                             </div>
-                        </MotionWrapper>
-                    </MotionWrapper>
+                            <div className="text-gray-600 dark:text-gray-400 text-sm font-medium">
+                                {stat.label}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </section>
 

@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
+import MotionWrapper from '@/components/MotionWrapper';
 
 export default function NotFound() {
     const [countdown, setCountdown] = useState(5);
@@ -30,103 +30,106 @@ export default function NotFound() {
     }, [countdown, router]);
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900">
-            <div className="text-center px-6">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="mb-8"
-                >
-                    <motion.h1
-                        className="text-8xl md:text-9xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-                        animate={{ scale: [1, 1.05, 1] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    >
+        <div className="min-h-screen bg-white dark:bg-gray-950 flex flex-col items-center justify-center px-6">
+            <MotionWrapper
+                className="text-center max-w-2xl"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+            >
+                {/* 404 號碼 */}
+                <div className="mb-8">
+                    <h1 className="text-8xl md:text-9xl font-bold text-gray-900 dark:text-white">
                         404
-                    </motion.h1>
-                </motion.div>
+                    </h1>
+                </div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="mb-8"
-                >
-                    <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+                {/* 標題和描述 */}
+                <div className="mb-12">
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                         頁面不存在
                     </h2>
-                    <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto">
+                    <p className="text-lg text-gray-600 dark:text-gray-400">
                         抱歉，您訪問的頁面不存在或已被移除。
                     </p>
-                </motion.div>
+                </div>
 
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
+                {/* 倒計時卡片 */}
+                <MotionWrapper
+                    className="mb-12 bg-gray-50 dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-800"
+                    initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    className="mb-8"
+                    transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                    <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200/50 dark:border-gray-700/50 max-w-sm mx-auto">
-                        <div className="text-6xl mb-4">
-                            <motion.span
-                                key={countdown}
-                                initial={{ scale: 1.2, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                transition={{ duration: 0.3 }}
-                                className="text-blue-600 dark:text-blue-400 font-bold"
-                            >
-                                {countdown}
-                            </motion.span>
-                        </div>
-                        <p className="text-gray-600 dark:text-gray-400">
-                            秒後自動跳轉至首頁
-                        </p>
-                        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-4">
-                            <motion.div
-                                className="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full"
-                                initial={{ width: "100%" }}
-                                animate={{ width: "0%" }}
-                                transition={{ duration: 5, ease: "linear" }}
-                            />
-                        </div>
+                    <p className="text-gray-600 dark:text-gray-400 mb-4">
+                        自動跳轉中...
+                    </p>
+                    <div className="text-5xl md:text-6xl font-bold text-blue-600 dark:text-blue-400 mb-4">
+                        {countdown}s
                     </div>
-                </motion.div>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                        將在 {countdown} 秒後返回首頁
+                    </p>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
+                    {/* 進度條 */}
+                    <div className="mt-6 w-full bg-gray-200 dark:bg-gray-800 rounded-full h-1 overflow-hidden">
+                        <MotionWrapper
+                            className="bg-blue-600 dark:bg-blue-400 h-full"
+                            initial={{ width: '100%' }}
+                            animate={{ width: '0%' }}
+                            transition={{ duration: 5, ease: 'linear' }}
+                        />
+                    </div>
+                </MotionWrapper>
+
+                {/* 按鈕 */}
+                <MotionWrapper
                     className="space-y-4"
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
                 >
                     <Link href="/">
-                        <motion.button
-                            className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
+                        <button className="w-full px-8 py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white rounded-lg font-medium transition-colors">
                             立即返回首頁
-                        </motion.button>
+                        </button>
                     </Link>
 
-                    <div className="text-sm text-gray-500 dark:text-gray-400">
-                        或者您可以
-                        <Link
-                            href="/projects"
-                            className="text-blue-600 dark:text-blue-400 hover:underline mx-1"
-                        >
-                            查看我的專案
-                        </Link>
-                        或
-                        <Link
-                            href="/about"
-                            className="text-blue-600 dark:text-blue-400 hover:underline mx-1"
-                        >
-                            了解更多
-                        </Link>
+                    {/* 導航連結 */}
+                    <div className="pt-4 text-sm text-gray-600 dark:text-gray-400 space-y-2">
+                        <p>或者您可以瀏覽：</p>
+                        <div className="flex flex-wrap justify-center gap-4">
+                            <Link
+                                href="/projects"
+                                className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                            >
+                                查看專案
+                            </Link>
+                            <span className="text-gray-400">•</span>
+                            <Link
+                                href="/about"
+                                className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                            >
+                                關於我
+                            </Link>
+                            <span className="text-gray-400">•</span>
+                            <Link
+                                href="/skills"
+                                className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                            >
+                                技能
+                            </Link>
+                            <span className="text-gray-400">•</span>
+                            <Link
+                                href="/contact"
+                                className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                            >
+                                聯絡我
+                            </Link>
+                        </div>
                     </div>
-                </motion.div>
-            </div>
+                </MotionWrapper>
+            </MotionWrapper>
         </div>
     );
 }

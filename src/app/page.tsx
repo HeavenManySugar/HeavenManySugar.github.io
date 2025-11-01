@@ -45,7 +45,7 @@ export default function Home() {
       <Header />
 
       {/* Hero Section - HIG Design */}
-      <section className="container mx-auto px-6 lg:px-8 py-24 md:py-32 relative z-10">
+      <section className="container mx-auto px-6 lg:px-8 py-24 md:py-32 border-b border-gray-200 dark:border-gray-800 relative z-10">
         <MotionWrapper
           className="max-w-2xl"
           variants={containerVariants}
@@ -79,7 +79,7 @@ export default function Home() {
             className="text-2xl md:text-3xl font-semibold text-gray-600 dark:text-gray-300 mb-6"
             variants={itemVariants}
           >
-            全棧開發者 • 創意工程師
+            全棧開發者
           </MotionWrapper>
 
           {/* 描述文字 */}

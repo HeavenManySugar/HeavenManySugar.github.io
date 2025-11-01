@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { MdLocationOn, MdEmail } from 'react-icons/md';
+import { MdEmail } from 'react-icons/md';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiGitea } from 'react-icons/si';
 import { IconType } from 'react-icons';
@@ -17,7 +17,6 @@ type ContactMethod = {
     title: string;
     value: string;
     href: string;
-    color: string;
     description: string;
 };
 
@@ -28,7 +27,6 @@ export default function ContactClient() {
             title: "電子郵件",
             value: "me@zre.tw",
             href: "mailto:me@zre.tw",
-            color: "amber",
             description: "歡迎透過 Email 聯絡討論"
         },
         {
@@ -36,7 +34,6 @@ export default function ContactClient() {
             title: "GitHub",
             value: "heavenmanysugar",
             href: "https://github.com/heavenmanysugar",
-            color: "gray",
             description: "查看我的開源專案"
         },
         {
@@ -44,7 +41,6 @@ export default function ContactClient() {
             title: "Gitea",
             value: "zre",
             href: "https://gitea.com/zre",
-            color: "emerald",
             description: "更多程式碼倉庫"
         },
         {
@@ -52,25 +48,25 @@ export default function ContactClient() {
             title: "LinkedIn",
             value: "ruien-zhang",
             href: "https://linkedin.com/in/ruien-zhang",
-            color: "orange",
             description: "專業網絡連結"
         }
     ];
+
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
             transition: {
-                delayChildren: 0.3,
-                staggerChildren: 0.2
+                staggerChildren: 0.12,
+                delayChildren: 0.2
             }
         }
     };
 
     const itemVariants = {
-        hidden: { x: -50, opacity: 0 },
+        hidden: { y: 12, opacity: 0 },
         visible: {
-            x: 0,
+            y: 0,
             opacity: 1,
             transition: {
                 duration: 0.6,
@@ -80,174 +76,120 @@ export default function ContactClient() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-rose-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden">
-            {/* 背景裝飾 */}
-            <div className="absolute inset-0 overflow-hidden">
-                <MotionWrapper
-                    className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl"
-                    animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.3, 0.5, 0.3],
-                        x: [0, 50, 0],
-                        y: [0, -30, 0],
-                    }}
-                    transition={{
-                        duration: 15,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                />
-                <MotionWrapper
-                    className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-rose-400/10 rounded-full blur-3xl"
-                    animate={{
-                        scale: [1.2, 1, 1.2],
-                        opacity: [0.5, 0.3, 0.5],
-                        x: [0, -50, 0],
-                        y: [0, 30, 0],
-                    }}
-                    transition={{
-                        duration: 20,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                />
-            </div>
-
+        <div className="min-h-screen bg-white dark:bg-gray-950">
             <Header />
 
-            {/* Contact Section */}
-            <section className="py-20 relative z-10">
-                <div className="container mx-auto px-6">
-                    <MotionWrapper
-                        className="text-center mb-16"
-                        initial={{ opacity: 0, y: -30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <h1 className="text-5xl font-bold text-gray-800 dark:text-white mb-6">
-                            聯絡我
-                        </h1>
-                        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                            歡迎與我聯絡！無論是技術交流、專案合作或任何想法分享，我都很期待聽到您的聲音
-                        </p>
-                    </MotionWrapper>
-
-                    <div className="max-w-4xl mx-auto">
-                        <MotionWrapper
-                            className="grid md:grid-cols-2 gap-8"
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                        >
-                            {contactMethods.map((method) => {
-                                const IconComponent = method.icon;
-                                return (
-                                    <MotionWrapper
-                                        key={method.title}
-                                        className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 group"
-                                        variants={itemVariants}
-                                        whileHover={{ y: -8, scale: 1.02 }}
-                                        transition={{ type: "spring", stiffness: 300 }}
-                                    >
-                                        <div className="flex items-center mb-6">
-                                            <MotionWrapper
-                                                className={`w-16 h-16 bg-${method.color}-100 dark:bg-${method.color}-900 rounded-2xl flex items-center justify-center mr-6`}
-                                                whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
-                                                transition={{ duration: 0.5 }}
-                                            >
-                                                <IconComponent className={`w-8 h-8 text-${method.color}-600 dark:text-${method.color}-400`} />
-                                            </MotionWrapper>
-                                            <div className="flex-1">
-                                                <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
-                                                    {method.title}
-                                                </h3>
-                                                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                                                    {method.description}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <MotionWrapper
-                                            type="a"
-                                            href={method.href}
-                                            target={method.href.startsWith('http') ? "_blank" : undefined}
-                                            rel={method.href.startsWith('http') ? "noopener noreferrer" : undefined}
-                                            className="block text-amber-600 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300 transition-colors font-medium text-lg"
-                                            whileHover={{ x: 10 }}
-                                            transition={{ type: "spring", stiffness: 400 }}
-                                        >
-                                            {method.value}
-                                            <MotionWrapper
-                                                type="span"
-                                                className="inline-block ml-2"
-                                                animate={{ x: [0, 5, 0] }}
-                                                transition={{ duration: 1.5, repeat: Infinity }}
-                                            >
-                                                →
-                                            </MotionWrapper>
-                                        </MotionWrapper>
-                                    </MotionWrapper>
-                                );
-                            })}
-                        </MotionWrapper>
-
-                        {/* Location Info */}
-                        <MotionWrapper
-                            className="mt-16 text-center"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.5 }}
-                            viewport={{ once: true }}
-                        >
-                            <MotionWrapper
-                                className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 inline-block"
-                                whileHover={{ scale: 1.05 }}
-                                transition={{ type: "spring", stiffness: 300 }}
-                            >
-                                <MotionWrapper
-                                    className="w-16 h-16 bg-rose-100 dark:bg-rose-900 rounded-2xl flex items-center justify-center mx-auto mb-4"
-                                    whileHover={{ rotate: [0, -10, 10, 0] }}
-                                    transition={{ duration: 0.5 }}
-                                >
-                                    <MdLocationOn className="w-8 h-8 text-rose-600 dark:text-rose-400" />
-                                </MotionWrapper>
-                                <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
-                                    位置
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-300">
-                                    台北, 台灣
-                                </p>
-                            </MotionWrapper>
-                        </MotionWrapper>
-
-                        {/* Call to Action */}
-                        <MotionWrapper
-                            className="mt-16 text-center"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ duration: 0.8, delay: 0.7 }}
-                            viewport={{ once: true }}
-                        >
-                            <div className="bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 p-8 rounded-2xl">
-                                <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                                    讓我們一起創造精彩的專案！
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-                                    我總是樂於學習新技術、分享經驗，並與有趣的人合作。
-                                    如果您有任何想法或機會，請不要猶豫聯絡我！
-                                </p>
-                                <MotionWrapper
-                                    type="a"
-                                    href="mailto:me@zre.tw"
-                                    className="inline-block bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    發送郵件
-                                </MotionWrapper>
-                            </div>
-                        </MotionWrapper>
-                    </div>
+            {/* Hero Section - HIG Design */}
+            <section className="container mx-auto px-6 lg:px-8 py-24 md:py-32 border-b border-gray-200 dark:border-gray-800">
+                <div className="max-w-3xl">
+                    <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                        聯絡我
+                    </h1>
+                    <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+                        歡迎與我聯絡！無論是技術交流、專案合作或任何想法分享，我都很期待聽到您的聲音。
+                    </p>
                 </div>
+            </section>
+
+            {/* Contact Methods */}
+            <section className="container mx-auto px-6 lg:px-8 py-12">
+                <MotionWrapper
+                    className="grid md:grid-cols-2 gap-6"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    transition={{
+                        staggerChildren: 0.12,
+                        delayChildren: 0.2
+                    }}
+                    viewport={{ once: true, margin: "-100px" }}
+                >
+                    {contactMethods.map((method) => {
+                        const IconComponent = method.icon;
+                        return (
+                            <MotionWrapper
+                                key={method.title}
+                                className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-800 transition-all hover:shadow-md hover:border-blue-200 dark:hover:border-blue-900"
+                                variants={itemVariants}
+                                whileHover={{ y: -4 }}
+                            >
+                                <div className="flex items-start gap-4 mb-4">
+                                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <IconComponent className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                                    </div>
+                                    <div className="flex-1">
+                                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                                            {method.title}
+                                        </h3>
+                                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                                            {method.description}
+                                        </p>
+                                    </div>
+                                </div>
+                                <a
+                                    href={method.href}
+                                    target={method.href.startsWith('http') ? "_blank" : undefined}
+                                    rel={method.href.startsWith('http') ? "noopener noreferrer" : undefined}
+                                    className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium text-sm transition-colors inline-flex items-center gap-1"
+                                >
+                                    {method.value}
+                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
+                            </MotionWrapper>
+                        );
+                    })}
+                </MotionWrapper>
+            </section>
+
+            {/* Location Section */}
+            <section className="container mx-auto px-6 lg:px-8 py-12">
+                <MotionWrapper
+                    className="max-w-md mx-auto text-center"
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                >
+                    <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-800">
+                        <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <span className="text-xl">📍</span>
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                            位置
+                        </h3>
+                        <p className="text-gray-600 dark:text-gray-400">
+                            台北，台灣
+                        </p>
+                    </div>
+                </MotionWrapper>
+            </section>
+
+            {/* Call to Action */}
+            <section className="container mx-auto px-6 lg:px-8 py-24 md:py-32">
+                <MotionWrapper
+                    className="max-w-2xl mx-auto text-center"
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                >
+                    <div className="bg-white dark:bg-gray-900 rounded-xl p-8 md:p-12 border border-gray-200 dark:border-gray-800">
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                            讓我們一起創造精彩的專案！
+                        </h2>
+                        <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
+                            我總是樂於學習新技術、分享經驗，並與有趣的人合作。如果您有任何想法或機會，請不要猶豫聯絡我！
+                        </p>
+                        <a
+                            href="mailto:me@zre.tw"
+                            className="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white font-medium transition-colors"
+                        >
+                            發送郵件
+                        </a>
+                    </div>
+                </MotionWrapper>
             </section>
 
             <Footer />

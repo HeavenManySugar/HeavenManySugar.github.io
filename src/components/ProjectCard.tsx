@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import MotionWrapper from './MotionWrapper';
 
 interface ProjectCardProps {
     title: string;
@@ -9,36 +9,29 @@ interface ProjectCardProps {
     projectUrl?: string;
     githubUrl: string;
     icon: string;
-    gradientFrom: string;
-    gradientTo: string;
     size?: 'large' | 'small';
 }
 
 // 安全的連結開啟函數
 const openLink = (url: string) => {
     try {
-        // 檢查 URL 是否有效
         if (!url || url.trim() === '') {
             console.error('Invalid URL:', url);
             return;
         }
 
-        // 如果是相對路徑，直接在當前頁面開啟
         if (url.startsWith('/')) {
             window.location.href = url;
         } else {
-            // 外部連結在新分頁開啟
             const newWindow = window.open(url, '_blank');
             if (newWindow) {
                 newWindow.focus();
             } else {
-                // 如果彈窗被阻擋，嘗試在當前頁面開啟
                 window.location.href = url;
             }
         }
     } catch (error) {
         console.error('Error opening link:', error);
-        // 備用方案：嘗試直接設置 location
         try {
             window.location.href = url;
         } catch (fallbackError) {
@@ -47,28 +40,16 @@ const openLink = (url: string) => {
     }
 };
 
-interface ProjectCardProps {
-    title: string;
-    description: string;
-    technologies: string[];
-    projectUrl?: string;
-    githubUrl: string;
-    icon: string;
-    gradientFrom: string;
-    gradientTo: string;
-    size?: 'large' | 'small';
-}
-
 // 技術標籤的顏色映射
 const getTechColor = (tech: string) => {
     const colorMap: { [key: string]: string } = {
-        'Next.js': 'bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200',
-        'React': 'bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200',
-        'TypeScript': 'bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200',
-        'Tailwind CSS': 'bg-cyan-100 dark:bg-cyan-900 text-cyan-800 dark:text-cyan-200',
+        'Next.js': 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200',
+        'React': 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200',
+        'TypeScript': 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200',
+        'Tailwind CSS': 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200',
         'C#': 'bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200',
         'MSSQL': 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200',
-        'C++': 'bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200',
+        'C++': 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200',
         'CMake': 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200',
         'Git': 'bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200',
         'Kotlin': 'bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200',
@@ -78,10 +59,10 @@ const getTechColor = (tech: string) => {
         'Python': 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200',
         'LangChain': 'bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200',
         'Ollama': 'bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200',
-        'SwiftUI': 'bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200',
+        'SwiftUI': 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200',
         'AI': 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
     };
-    return colorMap[tech] || 'bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200';
+    return colorMap[tech] || 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200';
 };
 
 export default function ProjectCard({
@@ -91,226 +72,75 @@ export default function ProjectCard({
     projectUrl,
     githubUrl,
     icon,
-    gradientFrom,
-    gradientTo,
     size = 'large'
 }: ProjectCardProps) {
     const isLarge = size === 'large';
 
-    // 動畫變體
-    const cardVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.5,
-                ease: "easeOut" as const
-            }
-        }
-    };
-
-    const iconVariants = {
-        hover: {
-            scale: 1.1,
-            rotate: 5,
-            transition: {
-                duration: 0.3,
-                ease: "easeOut" as const
-            }
-        }
-    };
-
-    const techTagVariants = {
-        hover: {
-            scale: 1.05,
-            y: -2,
-            transition: {
-                duration: 0.2,
-                ease: "easeOut" as const
-            }
-        }
-    };
-
     return (
-        <motion.div
-            className={`bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg group relative ${isLarge ? '' : 'shadow-md'}`}
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-            whileHover={{
-                y: -8,
-                scale: 1.02,
-                boxShadow: isLarge
-                    ? "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
-                    : "0 20px 40px -12px rgba(0, 0, 0, 0.25)",
-                transition: { duration: 0.3 }
-            }}
+        <MotionWrapper
+            className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 transition-all hover:shadow-md hover:border-blue-200 dark:hover:border-blue-900"
+            whileHover={{ y: -4 }}
         >
-            {/* 背景光暈效果 */}
-            <motion.div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{
-                    background: `radial-gradient(circle at 50% 50%, ${gradientFrom.replace('from-', '').replace('-500', '')}20 0%, transparent 70%)`
-                }}
-            />
-
-            <motion.div
-                className={`${isLarge ? 'h-48' : 'h-32'} bg-gradient-to-r ${gradientFrom} ${gradientTo} flex items-center justify-center relative overflow-hidden`}
-                whileHover={{
-                    background: `linear-gradient(135deg, ${gradientFrom} 0%, ${gradientTo} 100%)`,
-                    transition: { duration: 0.3 }
-                }}
-            >
-                <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent group-hover:from-white/20 transition-all duration-300"
-                    whileHover={{
-                        background: "linear-gradient(to bottom right, rgba(255,255,255,0.3), transparent)",
-                        transition: { duration: 0.3 }
-                    }}
-                />
-
-                {/* 動態背景圓圈 */}
-                <motion.div
-                    className="absolute w-32 h-32 rounded-full bg-white/5 -top-16 -right-16"
-                    animate={{
-                        scale: [1, 1.2, 1],
-                        rotate: [0, 180, 360]
-                    }}
-                    transition={{
-                        duration: 8,
-                        repeat: Infinity,
-                        ease: "linear"
-                    }}
-                />
-
-                <motion.span
-                    className={`${isLarge ? 'text-4xl' : 'text-2xl'} text-white relative z-10`}
-                    variants={iconVariants}
-                    whileHover="hover"
-                >
+            {/* 圖標區域 */}
+            <div className={`${isLarge ? 'h-40' : 'h-24'} bg-gray-50 dark:bg-gray-800 flex items-center justify-center border-b border-gray-200 dark:border-gray-800`}>
+                <span className={`${isLarge ? 'text-5xl' : 'text-3xl'}`}>
                     {icon}
-                </motion.span>
-            </motion.div>
+                </span>
+            </div>
 
             <div className={isLarge ? 'p-6' : 'p-4'}>
-                <motion.h3
-                    className={`${isLarge ? 'text-xl' : 'text-lg'} font-semibold text-gray-800 dark:text-white mb-2 transition-colors duration-300`}
-                    whileHover={{
-                        color: "#3B82F6",
-                        transition: { duration: 0.2 }
-                    }}
-                >
+                {/* 標題 */}
+                <h3 className={`${isLarge ? 'text-xl' : 'text-lg'} font-semibold text-gray-900 dark:text-white mb-2`}>
                     {title}
-                </motion.h3>
+                </h3>
 
-                <motion.p
-                    className={`text-gray-600 dark:text-gray-300 mb-4 leading-relaxed ${isLarge ? '' : 'text-sm mb-3'}`}
-                    initial={{ opacity: 0.8 }}
-                    whileHover={{
-                        opacity: 1,
-                        transition: { duration: 0.2 }
-                    }}
-                >
+                {/* 描述 */}
+                <p className={`text-gray-600 dark:text-gray-400 mb-4 leading-relaxed ${isLarge ? '' : 'text-sm'}`}>
                     {description}
-                </motion.p>
+                </p>
 
-                <motion.div
-                    className={`flex flex-wrap gap-2 mb-4 ${isLarge ? '' : 'gap-1 mb-3'}`}
-                    initial="visible"
-                    whileHover="hover"
-                >
-                    {technologies.map((tech, index) => (
-                        <motion.span
-                            key={index}
-                            className={`${getTechColor(tech)} px-2 py-1 rounded-full font-medium transition-all duration-200 cursor-pointer ${isLarge ? 'text-xs' : 'text-xs'}`}
-                            variants={techTagVariants}
-                            whileHover="hover"
-                            whileTap={{ scale: 0.95 }}
-                            custom={index}
-                            animate={{
-                                opacity: [0.7, 1, 0.7],
-                                transition: {
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    delay: index * 0.2
-                                }
-                            }}
+                {/* 技術標籤 */}
+                <div className={`flex flex-wrap gap-2 mb-4 ${isLarge ? '' : 'gap-1.5'}`}>
+                    {technologies.map((tech) => (
+                        <span
+                            key={tech}
+                            className={`${getTechColor(tech)} px-2 py-1 rounded-lg font-medium transition-colors ${isLarge ? 'text-xs' : 'text-xs'}`}
                         >
                             {tech}
-                        </motion.span>
+                        </span>
                     ))}
-                </motion.div>
+                </div>
 
-                <motion.div
-                    className="flex gap-3"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{
-                        opacity: 1,
-                        y: 0,
-                        transition: { duration: 0.5, delay: 0.3 }
-                    }}
-                >
+                {/* 連結按鈕 */}
+                <div className="flex gap-3">
                     {projectUrl && (
-                        <motion.button
-                            className={`text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium flex items-center gap-1 ${isLarge ? 'text-sm' : 'text-xs'} cursor-pointer relative z-10 bg-transparent border-none p-0`}
-                            whileHover={{
-                                scale: 1.05,
-                                x: 2,
-                                transition: { duration: 0.2 }
-                            }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={(e) => {
+                        <button
+                            className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium flex items-center gap-1 text-sm transition-colors"
+                            onClick={(e: React.MouseEvent) => {
                                 e.preventDefault();
-                                e.stopPropagation();
                                 openLink(projectUrl);
                             }}
                         >
                             查看專案
-                            <motion.svg
-                                className="w-3 h-3"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                                whileHover={{
-                                    x: 2,
-                                    y: -2,
-                                    transition: { duration: 0.2 }
-                                }}
-                            >
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </motion.svg>
-                        </motion.button>
+                            </svg>
+                        </button>
                     )}
-                    <motion.button
-                        className={`text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300 font-medium flex items-center gap-1 ${isLarge ? 'text-sm' : 'text-xs'} cursor-pointer relative z-10 bg-transparent border-none p-0`}
-                        whileHover={{
-                            scale: 1.05,
-                            x: 2,
-                            transition: { duration: 0.2 }
-                        }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={(e) => {
+                    <button
+                        className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300 font-medium flex items-center gap-1 text-sm transition-colors"
+                        onClick={(e: React.MouseEvent) => {
                             e.preventDefault();
-                            e.stopPropagation();
                             openLink(githubUrl);
                         }}
                     >
                         GitHub
-                        <motion.svg
-                            className="w-3 h-3"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                            whileHover={{
-                                rotate: 360,
-                                transition: { duration: 0.5 }
-                            }}
-                        >
+                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                        </motion.svg>
-                    </motion.button>
-                </motion.div>
+                        </svg>
+                    </button>
+                </div>
             </div>
-        </motion.div>
+        </MotionWrapper>
     );
 }

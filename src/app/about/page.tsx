@@ -104,7 +104,7 @@ export default function About() {
       <Header />
 
       {/* 頂部 Hero 區塊 */}
-      <section className="container mx-auto px-6 lg:px-8 py-24 md:py-32">
+      <section className="container mx-auto px-6 lg:px-8 py-24 md:py-32 border-b border-gray-200 dark:border-gray-800">
         <MotionWrapper
           className="max-w-2xl"
           variants={containerVariants}
@@ -155,7 +155,7 @@ export default function About() {
       </section>
 
       {/* 教育背景 */}
-      <section className="container mx-auto px-6 lg:px-8 py-16">
+      <section className="container mx-auto px-6 lg:px-8 py-12">
         <MotionWrapper
           className="max-w-4xl"
           variants={containerVariants}
@@ -190,7 +190,7 @@ export default function About() {
       </section>
 
       {/* 獲獎與榮譽 */}
-      <section className="container mx-auto px-6 lg:px-8 py-16">
+      <section className="container mx-auto px-6 lg:px-8 py-12">
         <MotionWrapper
           className="max-w-4xl"
           variants={containerVariants}
@@ -225,7 +225,7 @@ export default function About() {
       </section>
 
       {/* 技術棧 */}
-      <section className="container mx-auto px-6 lg:px-8 py-16">
+      <section className="container mx-auto px-6 lg:px-8 py-12">
         <MotionWrapper
           className="max-w-4xl"
           variants={containerVariants}
@@ -266,7 +266,7 @@ export default function About() {
       </section>
 
       {/* 核心價值 */}
-      <section className="container mx-auto px-6 lg:px-8 py-16">
+      <section className="container mx-auto px-6 lg:px-8 py-12">
         <MotionWrapper
           className="max-w-3xl mx-auto"
           variants={containerVariants}
