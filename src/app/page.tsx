@@ -157,7 +157,7 @@ export default function Home() {
             {[
               {
                 href: "/about",
-                icon: "👨‍�",
+                icon: "👨‍‍",
                 title: "關於我",
                 description: "背景故事與專業經歷"
               },
