@@ -79,7 +79,7 @@ export default function Home() {
             className="text-2xl md:text-3xl font-semibold text-gray-600 dark:text-gray-300 mb-6"
             variants={itemVariants}
           >
-            全棧開發者
+            全端開發者
           </MotionWrapper>
 
           {/* 描述文字 */}
