@@ -292,10 +292,9 @@ export default function About() {
               "✨ 追求卓越 - 注重細節與使用者體驗"
             ].map((value, i) => (
               <div key={i} className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
-                <span className="text-xl">{value.split(" - ")[0]}</span>
+                <span className="text-xl flex-shrink-0">{value.split(" - ")[0]}</span>
                 <div>
-                  <p className="font-semibold text-gray-900 dark:text-white">{value.split(" - ")[0]}</p>
-                  <p className="text-gray-600 dark:text-gray-400">{value.split(" - ")[1]}</p>
+                  <p className="font-semibold text-gray-900 dark:text-white">{value.split(" - ")[1]}</p>
                 </div>
               </div>
             ))}
