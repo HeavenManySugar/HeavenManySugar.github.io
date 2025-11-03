@@ -96,10 +96,10 @@ export default function Home() {
             全端開發者
           </MotionWrapper>
 
-          {/* 描述文字 */}
+          {/* 描述文字 - 固定高度防止版面移動 */}
           <MotionWrapper
             type="p"
-            className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-xl"
+            className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-xl min-h-[5.5rem]"
             variants={itemVariants}
           >
             {displayedText}
