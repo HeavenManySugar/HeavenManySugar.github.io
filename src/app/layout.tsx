@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notoSansTC } from "@/lib/fonts";
 import "./globals.css";
 import ScrollProgress from "@/components/ScrollProgress";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export const metadata: Metadata = {
   title: {
@@ -32,6 +33,7 @@ export default function RootLayout({
     <html lang="zh-TW" className="scroll-smooth" style={{ fontFamily: 'var(--font-noto-sans-tc)' }}>
       <body className={`${notoSansTC.className} antialiased`}>
         <ScrollProgress />
+        <ScrollToTop />
         {children}
       </body>
     </html>
