@@ -18,13 +18,7 @@ export default function Header() {
     ];
 
     return (
-        <MotionWrapper
-            type="header"
-            className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-black/80 border-b border-gray-200 dark:border-gray-800"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-        >
+        <header className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-black/80 border-b border-gray-200 dark:border-gray-800">
             <div className="container mx-auto px-6 lg:px-8 py-4">
                 <nav className="flex justify-between items-center">
                     {/* Logo */}
@@ -42,12 +36,11 @@ export default function Header() {
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex space-x-1">
-                        {navItems.map((item, index) => (
+                        {navItems.map((item) => (
                             <MotionWrapper
                                 key={item.href}
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4, delay: index * 0.05 }}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
                             >
                                 <Link
                                     href={item.href}
@@ -86,12 +79,11 @@ export default function Header() {
                     transition={{ duration: 0.3 }}
                 >
                     <div className="mt-4 space-y-1">
-                        {navItems.map((item, index) => (
+                        {navItems.map((item) => (
                             <MotionWrapper
                                 key={item.href}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.2, delay: index * 0.05 }}
+                                whileHover={{ x: 4 }}
+                                whileTap={{ scale: 0.95 }}
                             >
                                 <Link
                                     href={item.href}
@@ -109,6 +101,6 @@ export default function Header() {
                     </div>
                 </MotionWrapper>
             </div>
-        </MotionWrapper>
+        </header>
     );
 }
