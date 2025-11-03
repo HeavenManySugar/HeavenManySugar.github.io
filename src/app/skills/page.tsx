@@ -152,7 +152,7 @@ export default function SkillsPage() {
                     <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
                         技能專長
                     </h1>
-                    <p className="text-xl text-gray-600 dark:text-gray-400">
+                    <p className="text-xl text-gray-600 dark:text-gray-400 lxgw-wenkai-mono-tc-regular">
                         從前端到後端，從設計到實現，持續學習最新技術
                     </p>
                 </MotionWrapper>

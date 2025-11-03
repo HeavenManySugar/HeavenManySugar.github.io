@@ -53,7 +53,7 @@ export default function Footer() {
                         <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
                             讓我們聯繫
                         </h3>
-                        <p className="text-gray-600 dark:text-gray-400">
+                        <p className="text-gray-600 dark:text-gray-400 lxgw-wenkai-mono-tc-regular">
                             對我的作品感興趣？隨時與我聯繫，我很樂意討論您的想法和機會。
                         </p>
                     </MotionWrapper>
@@ -95,7 +95,7 @@ export default function Footer() {
 
                     {/* 頁腳資訊 */}
                     <MotionWrapper
-                        className="text-center"
+                        className="text-center lxgw-wenkai-mono-tc-regular"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         transition={{ duration: 0.6, delay: 0.4 }}

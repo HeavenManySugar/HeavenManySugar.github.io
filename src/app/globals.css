@@ -1,4 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+Mono+TC&family=Noto+Sans+TC:wght@100..900&display=swap');
 @import "tailwindcss";
+
+body {
+  font-family: 'Noto Sans TC', sans-serif !important;
+}
 
 :root {
   /* HIG 色彩系統 */
@@ -417,4 +422,10 @@ body {
 
 .magnetic:hover {
   transform: scale(1.05) rotate(1deg);
+}
+
+.lxgw-wenkai-mono-tc-regular {
+  font-family: "LXGW WenKai Mono TC", monospace;
+  font-weight: 400;
+  font-style: normal;
 }

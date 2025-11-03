@@ -64,7 +64,7 @@ export default function ProjectSection({
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                     {title}
                 </h2>
-                <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto lxgw-wenkai-mono-tc-regular">
                     {size === 'large'
                         ? '以下是我精心製作的主要專案，展示了我在全端開發、移動應用和遊戲開發等領域的技能'
                         : '這些是我在學習過程中完成的小專案，涵蓋了多種技術和應用場景'

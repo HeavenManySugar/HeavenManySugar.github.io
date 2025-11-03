@@ -120,7 +120,7 @@ export default function About() {
           </MotionWrapper>
           <MotionWrapper
             type="p"
-            className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-xl"
+            className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-xl lxgw-wenkai-mono-tc-regular"
             variants={itemVariants}
           >
             我是張睿恩，一位對程式設計充滿熱忱的開發者。從高職到大學，我不斷精進技術能力，並在各項競賽中取得優異成績。相信技術與設計的完美結合能創造出優秀的使用者體驗。

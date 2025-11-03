@@ -99,7 +99,7 @@ export default function Home() {
           {/* 描述文字 - 固定高度防止版面移動 */}
           <MotionWrapper
             type="p"
-            className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-xl min-h-[5.5rem]"
+            className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-xl min-h-[5.5rem] lxgw-wenkai-mono-tc-regular"
             variants={itemVariants}
           >
             {displayedText}
@@ -168,7 +168,7 @@ export default function Home() {
           </MotionWrapper>
           <MotionWrapper
             type="p"
-            className="text-lg text-gray-600 dark:text-gray-400 mb-12"
+            className="text-lg text-gray-600 dark:text-gray-400 mb-12 lxgw-wenkai-mono-tc-regular"
             variants={itemVariants}
           >
             了解更多關於我的背景、技能和作品

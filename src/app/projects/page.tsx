@@ -91,7 +91,7 @@ export default function ProjectsClient() {
                     <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
                         專案作品集
                     </h1>
-                    <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed lxgw-wenkai-mono-tc-regular">
                         歡迎瀏覽我的程式開發作品集，這裡展示了我在不同技術領域的專案經驗和實踐成果。
                     </p>
                 </div>

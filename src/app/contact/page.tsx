@@ -85,7 +85,7 @@ export default function ContactClient() {
                     <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
                         聯絡我
                     </h1>
-                    <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed lxgw-wenkai-mono-tc-regular">
                         歡迎與我聯絡！無論是技術交流、專案合作或任何想法分享，我都很期待聽到您的聲音。
                     </p>
                 </div>
