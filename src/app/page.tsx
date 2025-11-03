@@ -99,12 +99,19 @@ export default function Home() {
           {/* 描述文字 */}
           <MotionWrapper
             type="p"
-            className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-xl min-h-24"
+            className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-xl"
             variants={itemVariants}
           >
             {displayedText}
             <span className="animate-pulse">▌</span>
           </MotionWrapper>
+
+          {/* SEO 改善：提供給不支援 JS 的爬蟲的靜態內容 */}
+          <noscript>
+            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-xl hidden">
+              {descriptions[0]}
+            </p>
+          </noscript>
 
           {/* 主要行動按鈕 - 清晰且易於識別 */}
           <MotionWrapper

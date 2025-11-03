@@ -5,6 +5,7 @@ interface UseTypewriterProps {
   typingSpeed?: number;
   deletingSpeed?: number;
   delayBetweenTexts?: number;
+  showStaticText?: boolean;
 }
 
 export const useTypewriter = ({
@@ -12,14 +13,27 @@ export const useTypewriter = ({
   typingSpeed = 50,
   deletingSpeed = 30,
   delayBetweenTexts = 2000,
+  showStaticText = true,
 }: UseTypewriterProps) => {
-  const [displayedText, setDisplayedText] = useState('');
+  // SEO 改善：初始顯示第一段完整文本，確保爬蟲能讀到內容
+  const [displayedText, setDisplayedText] = useState(showStaticText ? texts[0] : '');
   const [textIndex, setTextIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(!showStaticText);
 
   useEffect(() => {
+    // SEO 改善：初始加載時顯示完整文本，延遲一段時間後再開始動畫
+    if (showStaticText && isAnimating === false) {
+      const startDelay = setTimeout(() => {
+        setIsAnimating(true);
+      }, delayBetweenTexts);
+      return () => clearTimeout(startDelay);
+    }
+
     const currentText = texts[textIndex];
     let timer: NodeJS.Timeout;
+
+    if (!isAnimating) return;
 
     if (!isDeleting) {
       // 正在輸入
@@ -47,7 +61,7 @@ export const useTypewriter = ({
     }
 
     return () => clearTimeout(timer);
-  }, [displayedText, isDeleting, textIndex, texts, typingSpeed, deletingSpeed, delayBetweenTexts]);
+  }, [displayedText, isDeleting, textIndex, texts, typingSpeed, deletingSpeed, delayBetweenTexts, isAnimating, showStaticText]);
 
   return displayedText;
 };
