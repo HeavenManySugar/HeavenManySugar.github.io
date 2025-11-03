@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowRightIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import MotionWrapper from "@/components/MotionWrapper";
+import { useTypewriter } from "@/hooks/useTypewriter";
 
 export default function Home() {
   useEffect(() => {
@@ -17,6 +18,19 @@ export default function Home() {
     // 滾動到頂部
     window.scrollTo(0, 0);
   }, []);
+
+  const descriptions = [
+    "專注於打造實用且易用的應用程式，在過程中不斷學習與調整，努力把想法一步步實現。",
+    "喜歡面對各種技術挑戰，透過持續的探索與練習，期望為使用者帶來更好的體驗。",
+    "相信技術與創意能帶來改變，保持好奇心與學習動力，踏實累積能力，朝更好的數位產品努力。"
+  ];
+
+  const displayedText = useTypewriter({
+    texts: descriptions,
+    typingSpeed: 50,
+    deletingSpeed: 30,
+    delayBetweenTexts: 2000,
+  });
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -85,10 +99,11 @@ export default function Home() {
           {/* 描述文字 */}
           <MotionWrapper
             type="p"
-            className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-xl"
+            className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-xl min-h-24"
             variants={itemVariants}
           >
-            專注於打造高效、優雅的應用程式。透過創新的設計與紮實的技術，將想法化為現實。
+            {displayedText}
+            <span className="animate-pulse">▌</span>
           </MotionWrapper>
 
           {/* 主要行動按鈕 - 清晰且易於識別 */}
