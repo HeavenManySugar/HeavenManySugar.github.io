@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { notoSansTC } from "@/lib/fonts";
 import "./globals.css";
 import ScrollProgress from "@/components/ScrollProgress";
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -34,8 +29,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-TW" className="scroll-smooth">
-      <body className={`${inter.className} antialiased`}>
+    <html lang="zh-TW" className="scroll-smooth" style={{ fontFamily: 'var(--font-noto-sans-tc)' }}>
+      <body className={`${notoSansTC.className} antialiased`}>
         <ScrollProgress />
         {children}
       </body>
