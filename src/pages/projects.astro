@@ -1,0 +1,174 @@
+---
+import ProjectSection from "../components/ProjectSection";
+import PageLayout from "../layouts/PageLayout.astro";
+// 主要專案數據
+const featuredProjects = [
+  {
+    title: "個人網站",
+    description:
+      "使用 Next.js 和 Tailwind CSS 建立的響應式個人網站，展示個人技能與專案作品。",
+    technologies: ["Next.js", "Tailwind CSS", "TypeScript"],
+    projectUrl: "https://zre.tw",
+    githubUrl: "https://github.com/HeavenManySugar/HeavenManySugar.github.io",
+    icon: "🌐",
+  },
+  {
+    title: "電商平台",
+    description: "實作一個賣茶網站，包含商品管理、購物車和訂單追蹤功能。",
+    technologies: ["React", "C#", "MSSQL"],
+    projectUrl: "https://ootd.ruien.me/",
+    githubUrl: "https://github.com/HeavenManySugar/OOTD-FullStack",
+    icon: "🛒",
+  },
+  {
+    title: "節奏地牢(Clone模仿)",
+    description: "透過C++實作的節奏地牢遊戲，包含音樂節奏與角色扮演元素。",
+    technologies: ["C++", "CMake", "Git"],
+    projectUrl:
+      "https://github.com/NTUT-FUCK-PTSD/Fuck-PTSD/releases/tag/v1.0.6",
+    githubUrl: "https://github.com/NTUT-FUCK-PTSD/Fuck-PTSD",
+    icon: "🎮",
+  },
+  {
+    title: "交友軟體",
+    description:
+      "一個交友軟體，支援個人資料管理和好友推薦功能，用於練習UI/UX設計。",
+    technologies: ["Kotlin", "Jetpack Compose", "Firebase"],
+    projectUrl:
+      "https://www.canva.com/design/DAGp2popNs0/Twi5BEsI5Epvt6VyvC_yMQ/view?utm_content=DAGp2popNs0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h4ffa896248",
+    githubUrl: "https://github.com/HeavenManySugar/NTUT-MADD-Final",
+    icon: "💬",
+  },
+];
+
+// 小專案數據
+const smallProjects = [
+  {
+    title: "TTS Web",
+    description:
+      "TTS Web 是一個基於 Next.js 的文字轉語音應用程式，提供多語言支持和語音選擇功能。",
+    technologies: ["Next.js"],
+    projectUrl: "https://zre.tw/tts-web",
+    githubUrl: "https://github.com/HeavenManySugar/tts-web",
+    icon: "🔊",
+  },
+  {
+    title: "Isolate React 配置工具",
+    description: "一個現代化的、使用者友善的 Web 介面，用於配置 Isolate 沙盒。",
+    technologies: ["Next.js", "daisyUI"],
+    projectUrl: "https://zre.tw/isolate-react",
+    githubUrl: "https://github.com/HeavenManySugar/isolate-react",
+    icon: "🛡️",
+  },
+  {
+    title: "員工訓練與管理平台",
+    description: "113-1 人工智慧課程專案，實作員工訓練與管理平台。",
+    technologies: ["Python", "LangChain", "Ollama"],
+    projectUrl: "https://github.com/Bryan-Eva/ETKMP",
+    githubUrl: "https://github.com/Bryan-Eva/ETKMP",
+    icon: "🏢",
+  },
+  {
+    title: "Todolist",
+    description:
+      "一個簡單的待辦事項應用程式，使用 SwiftUI 和 Firebase 實現實時數據同步，並結合AI做為規劃助手。",
+    technologies: ["SwiftUI", "Firebase", "AI"],
+    projectUrl:
+      "https://www.canva.com/design/DAGqheO54t8/TzX726Eu0ZKVJ-MJrnIgwQ/edit?utm_content=DAGqheO54t8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+    githubUrl: "https://github.com/HeavenManySugar/Todolist",
+    icon: "✅",
+  },
+];
+---
+
+<PageLayout
+  title="專案作品集 | 張睿恩 (Rui-En Zhang)"
+  description="張睿恩的程式開發專案作品集，展示多樣化的技術應用與實踐經驗。"
+>
+  {/* Hero Section - HIG Design */}
+  <section
+    class="container mx-auto px-6 lg:px-8 py-24 md:py-32 border-b border-gray-200 dark:border-gray-800"
+  >
+    <div class="max-w-3xl">
+      <h1
+        class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6"
+      >
+        專案作品集
+      </h1>
+      <p
+        class="text-xl text-gray-600 dark:text-gray-400 leading-relaxed lxgw-wenkai-mono-tc-regular"
+      >
+        歡迎瀏覽我的程式開發作品集，這裡展示了我在不同技術領域的專案經驗和實踐成果。
+      </p>
+    </div>
+  </section>
+
+  {/* 精選專案 */}
+  <section class="py-12">
+    <ProjectSection
+      client:load
+      title="精選專案"
+      projects={featuredProjects}
+      size="large"
+      gridCols="lg:grid-cols-3"
+    />
+  </section>
+
+  {/* 小專案 */}
+  <section class="py-12 bg-gray-50 dark:bg-gray-900/50">
+    <ProjectSection
+      client:visible
+      title="小專案"
+      projects={smallProjects}
+      size="small"
+      gridCols="lg:grid-cols-4"
+    />
+  </section>
+
+  {/* 技能統計 */}
+  <section class="container mx-auto px-6 lg:px-8 py-24 md:py-32">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        專案統計
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-400">我的開發之旅</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+      {
+        [
+          {
+            value: featuredProjects.length + smallProjects.length,
+            label: "完成專案",
+          },
+          {
+            value: Array.from(
+              new Set(
+                [...featuredProjects, ...smallProjects].flatMap(
+                  (p) => p.technologies
+                )
+              )
+            ).length,
+            label: "使用技術",
+          },
+          {
+            value: featuredProjects.length,
+            label: "精選專案",
+          },
+          {
+            value: smallProjects.length,
+            label: "小專案",
+          },
+        ].map((stat) => (
+          <div class="p-6 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-center transition-all hover:shadow-md hover:border-blue-200 dark:hover:border-blue-900">
+            <div class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+              {stat.value}
+            </div>
+            <div class="text-gray-600 dark:text-gray-400 text-sm font-medium">
+              {stat.label}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</PageLayout>

@@ -3,7 +3,7 @@
  * 顯示競賽或比賽獲獎記錄
  */
 
-import { getColorClasses, type ColorVariant } from "@/utils/colorUtils";
+import { getColorClasses, type ColorVariant } from "../utils/colorUtils";
 
 interface AwardItem {
     emoji: string;

@@ -3,7 +3,7 @@
  * 顯示除競賽外的其他重要成就
  */
 
-import { getColorClasses, type ColorVariant } from "@/utils/colorUtils";
+import { getColorClasses, type ColorVariant } from "../utils/colorUtils";
 
 interface AchievementItem {
     emoji: string;

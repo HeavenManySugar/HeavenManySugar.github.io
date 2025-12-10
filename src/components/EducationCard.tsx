@@ -3,7 +3,7 @@
  * 顯示單一教育經歷
  */
 
-import { getColorClasses, type ColorVariant } from "@/utils/colorUtils";
+import { getColorClasses, type ColorVariant } from "../utils/colorUtils";
 
 interface EducationItem {
     id: string;

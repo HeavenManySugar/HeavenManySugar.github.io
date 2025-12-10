@@ -1,11 +1,9 @@
-'use client';
-
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { SiGitea } from 'react-icons/si';
-import MotionWrapper from '@/components/MotionWrapper';
-import ClientOnlyBuildInfo from '@/components/ClientOnlyBuildInfo';
-import { buildInfo } from '@/build-info';
+import MotionWrapper from '../components/MotionWrapper';
+import ClientOnlyBuildInfo from '../components/ClientOnlyBuildInfo';
+import { buildInfo } from '../build-info';
 
 export default function Footer() {
     const socialLinks = [

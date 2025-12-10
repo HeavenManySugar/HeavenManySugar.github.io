@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { forwardRef, useEffect, useState, ReactNode } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
+import type { ReactNode } from 'react';
 
 interface MotionWrapperProps {
     type?: keyof typeof motion;
@@ -66,7 +64,7 @@ const MotionWrapper = forwardRef<HTMLElement, MotionWrapperProps>(
         if (!isClient) {
             const staticStyle = {
                 ...props.style,
-                opacity: 1,
+                opacity: 0,
                 transform: 'none',
                 visibility: 'visible' as const,
             };

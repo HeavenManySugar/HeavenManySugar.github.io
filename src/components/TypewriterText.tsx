@@ -1,20 +1,25 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import MotionWrapper from './MotionWrapper';
 
-interface UseTypewriterProps {
+interface TypewriterTextProps {
   texts: string[];
   typingSpeed?: number;
   deletingSpeed?: number;
   delayBetweenTexts?: number;
   showStaticText?: boolean;
+  className?: string;
+  variants?: any;
 }
 
-export const useTypewriter = ({
+export const TypewriterText: React.FC<TypewriterTextProps> = ({
   texts,
   typingSpeed = 50,
   deletingSpeed = 30,
   delayBetweenTexts = 2000,
   showStaticText = true,
-}: UseTypewriterProps) => {
+  className = '',
+  variants,
+}) => {
   // SEO 改善：初始顯示第一段完整文本，確保爬蟲能讀到內容
   const [displayedText, setDisplayedText] = useState(showStaticText ? texts[0] : '');
   const [textIndex, setTextIndex] = useState(0);
@@ -63,5 +68,16 @@ export const useTypewriter = ({
     return () => clearTimeout(timer);
   }, [displayedText, isDeleting, textIndex, texts, typingSpeed, deletingSpeed, delayBetweenTexts, isAnimating, showStaticText]);
 
-  return displayedText;
+  return (
+    <MotionWrapper
+      type="p"
+      className={className}
+      variants={variants}
+    >
+      {displayedText}
+      <span className="animate-pulse">▌</span>
+    </MotionWrapper>
+  );
 };
+
+export default TypewriterText;

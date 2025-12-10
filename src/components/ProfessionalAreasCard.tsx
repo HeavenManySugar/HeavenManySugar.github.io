@@ -3,7 +3,7 @@
  * 展示擅長的技術領域
  */
 
-import { getColorClasses, type ColorVariant } from "@/utils/colorUtils";
+import { getColorClasses, type ColorVariant } from "../utils/colorUtils";
 
 interface ProfessionalArea {
     label: string;

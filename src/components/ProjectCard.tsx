@@ -1,5 +1,3 @@
-'use client';
-
 import MotionWrapper from './MotionWrapper';
 
 interface ProjectCardProps {

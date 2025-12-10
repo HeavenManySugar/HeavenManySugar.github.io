@@ -1,12 +1,15 @@
-'use client';
-
 import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface PageTransitionProps {
     children: ReactNode;
 }
 
+/**
+ * PageTransition 組件
+ * 配合 Astro View Transitions API 使用
+ * 提供額外的內容級動畫效果
+ */
 export default function PageTransition({ children }: PageTransitionProps) {
     return (
         <motion.div
@@ -14,7 +17,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{
-                duration: 0.6,
+                duration: 0.4,
                 ease: [0.25, 0.46, 0.45, 0.94]
             }}
         >

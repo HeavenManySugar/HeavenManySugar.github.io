@@ -1,5 +1,3 @@
-'use client';
-
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
@@ -18,14 +16,14 @@ export default function LoadingScreen() {
 
     return (
         <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-blue-900"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-linear-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-blue-900"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
         >
             <div className="text-center">
                 <motion.div
-                    className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mb-6 mx-auto"
+                    className="w-20 h-20 bg-linear-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mb-6 mx-auto"
                     animate={{
                         scale: [1, 1.2, 1],
                         rotate: [0, 180, 360],
@@ -40,7 +38,7 @@ export default function LoadingScreen() {
                 </motion.div>
 
                 <motion.h2
-                    className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4"
+                    className="text-2xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.6 }}

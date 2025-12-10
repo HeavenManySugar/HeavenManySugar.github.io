@@ -1,5 +1,3 @@
-'use client';
-
 import ProjectCard from './ProjectCard';
 import MotionWrapper from './MotionWrapper';
 

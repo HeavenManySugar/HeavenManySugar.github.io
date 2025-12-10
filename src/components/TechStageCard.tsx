@@ -3,7 +3,7 @@
  * 顯示技術學習歷程中的各個階段
  */
 
-import { getColorClasses, type ColorVariant } from "@/utils/colorUtils";
+import { getColorClasses, type ColorVariant } from "../utils/colorUtils";
 
 interface TechStageItem {
     icon: string;

@@ -1,13 +1,8 @@
-'use client';
-
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import MotionWrapper from '@/components/MotionWrapper';
+import MotionWrapper from '../components/MotionWrapper';
 
-export default function Header() {
-    const pathname = usePathname();
+export default function Header({ pathname }: { pathname: string }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const navItems = [
@@ -26,12 +21,12 @@ export default function Header() {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                     >
-                        <Link
+                        <a
                             href="/"
                             className="text-lg font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                         >
                             ZRE
-                        </Link>
+                        </a>
                     </MotionWrapper>
 
                     {/* Desktop Navigation */}
@@ -42,7 +37,7 @@ export default function Header() {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                <Link
+                                <a
                                     href={item.href}
                                     className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                                         pathname === item.href
@@ -51,7 +46,7 @@ export default function Header() {
                                     }`}
                                 >
                                     {item.label}
-                                </Link>
+                                </a>
                             </MotionWrapper>
                         ))}
                     </div>
@@ -85,7 +80,7 @@ export default function Header() {
                                 whileHover={{ x: 4 }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                <Link
+                                <a
                                     href={item.href}
                                     className={`block px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                                         pathname === item.href
@@ -95,7 +90,7 @@ export default function Header() {
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     {item.label}
-                                </Link>
+                                </a>
                             </MotionWrapper>
                         ))}
                     </div>

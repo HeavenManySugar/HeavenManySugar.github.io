@@ -1,13 +1,8 @@
-'use client';
-
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import MotionWrapper from '@/components/MotionWrapper';
+import MotionWrapper from '../components/MotionWrapper';
 
 export default function NotFound() {
     const [countdown, setCountdown] = useState(5);
-    const router = useRouter();
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -25,9 +20,9 @@ export default function NotFound() {
 
     useEffect(() => {
         if (countdown === 0) {
-            router.push('/');
+            window.location.href = '/';
         }
-    }, [countdown, router]);
+    }, [countdown]);
 
     return (
         <div className="min-h-screen bg-white dark:bg-gray-950 flex flex-col items-center justify-center px-6">
@@ -89,43 +84,43 @@ export default function NotFound() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                    <Link href="/">
+                    <a href="/">
                         <button className="w-full px-8 py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white rounded-lg font-medium transition-colors">
                             立即返回首頁
                         </button>
-                    </Link>
+                    </a>
 
                     {/* 導航連結 */}
                     <div className="pt-4 text-sm text-gray-600 dark:text-gray-400 space-y-2">
                         <p>或者您可以瀏覽：</p>
                         <div className="flex flex-wrap justify-center gap-4">
-                            <Link
+                            <a
                                 href="/projects"
                                 className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
                             >
                                 查看專案
-                            </Link>
+                            </a>
                             <span className="text-gray-400">•</span>
-                            <Link
+                            <a
                                 href="/about"
                                 className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
                             >
                                 關於我
-                            </Link>
+                            </a>
                             <span className="text-gray-400">•</span>
-                            <Link
+                            <a
                                 href="/skills"
                                 className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
                             >
                                 技能
-                            </Link>
+                            </a>
                             <span className="text-gray-400">•</span>
-                            <Link
+                            <a  
                                 href="/contact"
                                 className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
                             >
                                 聯絡我
-                            </Link>
+                            </a>
                         </div>
                     </div>
                 </MotionWrapper>

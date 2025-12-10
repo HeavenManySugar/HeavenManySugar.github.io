@@ -1,8 +1,6 @@
-'use client';
-
 import { useEffect, useState } from 'react';
-import MotionWrapper from '@/components/MotionWrapper';
-import type { BuildInfo } from '@/types/build-info';
+import MotionWrapper from '../components/MotionWrapper';
+import type { BuildInfo } from '../types/build-info';
 
 interface BuildInfoProps {
     buildTime: BuildInfo['buildTime'];

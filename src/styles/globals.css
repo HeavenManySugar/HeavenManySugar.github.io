@@ -424,3 +424,53 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+/* View Transitions API - 頁面過渡動畫 */
+@supports (view-transition-name: auto) {
+  ::view-transition-old(root) {
+    animation: slide-out-fade 0.4s ease-in-out forwards;
+  }
+
+  ::view-transition-new(root) {
+    animation: slide-in-fade 0.4s ease-in-out forwards;
+  }
+
+  @keyframes slide-out-fade {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes slide-in-fade {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* 確保平滑過渡 */
+html {
+  view-transition-duration: 0.4s;
+}
+
+/* 為特定元素自訂過渡 */
+::view-transition-image-pair(root) {
+  isolation: auto;
+}
+
+/* 在導航時禁用滾動以防止閃爍 */
+@supports (view-transition-name: auto) {
+  html.is-transitioning {
+    overflow: hidden;
+  }
+}

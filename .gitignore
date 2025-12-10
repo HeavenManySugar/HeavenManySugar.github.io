@@ -43,3 +43,7 @@ next-env.d.ts
 # build info (generated during build)
 src/build-info.json
 src/build-info.ts
+
+# astro cache
+.astro/
+dist/
