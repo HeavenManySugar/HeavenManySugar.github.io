@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { ChevronUp } from 'lucide-react';
+import { LuChevronUp } from "react-icons/lu";
 
 export default function ScrollToTop() {
     const [isVisible, setIsVisible] = useState(false);
@@ -40,7 +40,7 @@ export default function ScrollToTop() {
                     className="fixed bottom-8 right-8 p-3 rounded-full bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-500 text-white shadow-lg z-50 transition-colors duration-200"
                     aria-label="回到最上方"
                 >
-                    <ChevronUp size={24} />
+                    <LuChevronUp size={24} />
                 </motion.button>
             )}
         </AnimatePresence>

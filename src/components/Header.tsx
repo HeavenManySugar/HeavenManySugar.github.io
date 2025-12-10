@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { HiOutlineBars3, HiOutlineXMark } from "react-icons/hi2";
 import MotionWrapper from '../components/MotionWrapper';
 
 export default function Header({ pathname }: { pathname: string }) {
@@ -59,9 +59,9 @@ export default function Header({ pathname }: { pathname: string }) {
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                     >
                         {isMenuOpen ? (
-                            <XMarkIcon className="w-6 h-6" />
+                            <HiOutlineXMark className="w-6 h-6" />
                         ) : (
-                            <Bars3Icon className="w-6 h-6" />
+                            <HiOutlineBars3 className="w-6 h-6" />
                         )}
                     </MotionWrapper>
                 </nav>

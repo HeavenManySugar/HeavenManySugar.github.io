@@ -1,5 +1,5 @@
 ---
-import { ArrowRightIcon, SparklesIcon } from "@heroicons/react/24/outline";
+import { HiOutlineArrowRight, HiOutlineSparkles } from "react-icons/hi2";
 import MotionWrapper from "../components/MotionWrapper";
 import TypewriterText from "../components/TypewriterText";
 import PageLayout from "../layouts/PageLayout.astro";
@@ -56,7 +56,7 @@ const itemVariants = {
         variants={itemVariants}
         className="inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-950/30 text-blue-700 dark:text-blue-400 px-3 py-1.5 rounded-full text-sm font-medium mb-6"
       >
-        <SparklesIcon className="w-4 h-4" />
+        <HiOutlineSparkles className="w-4 h-4" />
         <span>歡迎來訪</span>
       </MotionWrapper>
 
@@ -115,7 +115,7 @@ const itemVariants = {
             class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3.5 rounded-lg font-medium transition-colors duration-200"
           >
             查看作品
-            <ArrowRightIcon className="w-4 h-4" />
+            <HiOutlineArrowRight className="w-4 h-4" />
           </a>
         </MotionWrapper>
         <MotionWrapper
@@ -216,7 +216,7 @@ const itemVariants = {
                       {item.description}
                     </p>
                   </div>
-                  <ArrowRightIcon className="w-5 h-5 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors shrink-0 mt-0.5" />
+                  <HiOutlineArrowRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors shrink-0 mt-0.5" />
                 </div>
               </a>
             </MotionWrapper>
