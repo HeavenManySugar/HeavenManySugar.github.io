@@ -36,7 +36,7 @@ try {
     // 同時創建一個 TypeScript 模組
     const buildInfoTsPath = path.join(srcDir, 'build-info.ts');
     const tsContent = `// 這個文件是自動生成的，請不要手動編輯
-import type { BuildInfo } from '@/types/build-info';
+import type { BuildInfo } from './types/build-info';
 
 export const buildInfo: BuildInfo = {
   commitHash: ${JSON.stringify(buildInfo.commitHash)},
