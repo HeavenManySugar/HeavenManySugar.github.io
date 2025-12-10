@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { SiGitea } from "react-icons/si";
 import MotionWrapper from "../components/MotionWrapper";
-import ClientOnlyBuildInfo from "../components/ClientOnlyBuildInfo";
+import ClientOnlyBuildInfo from "../components/ClientOnlyBuildInfo.astro";
 import { buildInfo } from "../build-info";
 const socialLinks = [
   {
@@ -111,7 +111,6 @@ const socialLinks = [
         {
           buildInfo && buildInfo.shortCommitHash !== "dev" && (
             <ClientOnlyBuildInfo
-              client:visible
               buildTime={buildInfo.buildTime}
               shortCommitHash={buildInfo.shortCommitHash}
               branchName={buildInfo.branchName}
