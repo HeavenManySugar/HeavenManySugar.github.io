@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from "astro:transitions";
 import "../styles/globals.css";
 import "../styles/fonts.css";
 
@@ -8,7 +8,6 @@ const {
   description = "張睿恩的個人網頁 - 熱愛程式設計與創新的開發者 | Rui-En Zhang's personal website - A passionate developer",
 } = Astro.props;
 
-import '../scripts/viewTransitions.ts';
 ---
 
 <!doctype html>
@@ -33,7 +32,7 @@ import '../scripts/viewTransitions.ts';
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
 
-    <ViewTransitions />
+    <ClientRouter />
     <title>{title}</title>
   </head>
   <body class="antialiased">

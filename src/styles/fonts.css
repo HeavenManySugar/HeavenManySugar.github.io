@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+Mono+TC&family=Noto+Sans+TC:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+Mono+TC&family=Noto+Sans+TC&display=swap');
 
 /* Noto Sans TC - 主要字體 */
 :root {
@@ -9,42 +9,7 @@
 .noto-sans-tc {
   font-family: var(--font-noto-sans-tc);
   font-optical-sizing: auto;
-  font-style: normal;
-}
-
-.noto-sans-tc-100 {
-  font-family: var(--font-noto-sans-tc);
-  font-weight: 100;
-  font-style: normal;
-}
-
-.noto-sans-tc-300 {
-  font-family: var(--font-noto-sans-tc);
-  font-weight: 300;
-  font-style: normal;
-}
-
-.noto-sans-tc-400 {
-  font-family: var(--font-noto-sans-tc);
   font-weight: 400;
-  font-style: normal;
-}
-
-.noto-sans-tc-500 {
-  font-family: var(--font-noto-sans-tc);
-  font-weight: 500;
-  font-style: normal;
-}
-
-.noto-sans-tc-700 {
-  font-family: var(--font-noto-sans-tc);
-  font-weight: 700;
-  font-style: normal;
-}
-
-.noto-sans-tc-900 {
-  font-family: var(--font-noto-sans-tc);
-  font-weight: 900;
   font-style: normal;
 }
 
