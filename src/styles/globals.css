@@ -23,6 +23,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* 確保在沒有 JavaScript 的情況下內容可見 */
+@media (scripting: none) {
+  * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+}
+
 /* 文字打字機效果 */
 .typewriter {
   overflow: hidden;

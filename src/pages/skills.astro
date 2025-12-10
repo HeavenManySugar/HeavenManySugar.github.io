@@ -1,6 +1,6 @@
 ---
 import MotionWrapper from "../components/MotionWrapper";
-import SkillSection from "../components/SkillSection";
+import SkillSection from "../components/SkillSection.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 
 // 動畫變體
@@ -139,7 +139,7 @@ const otherSkills = [
         }}
         viewport={{ once: true, margin: "-100px" }}
       >
-        {skillsData.map((skill) => <SkillSection client:load {...skill} />)}
+        {skillsData.map((skill) => <SkillSection {...skill} />)}
       </MotionWrapper>
     </div>
   </section>
@@ -159,7 +159,6 @@ const otherSkills = [
         variants={containerVariants}
       >
         <SkillSection
-          client:idle
           icon="🤖"
           title="AI & 機器學習"
           description="參與全國AI競賽獲得佳作，具備機器學習實務經驗與數據分析能力"
