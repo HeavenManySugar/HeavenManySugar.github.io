@@ -2,7 +2,8 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://zre.tw/sitemap.xml
+Sitemap: https://zre.tw/sitemap-index.xml
+Sitemap: https://zre.tw/sitemap-0.xml
 
 # Disallow specific paths if needed
 # Disallow: /admin/
