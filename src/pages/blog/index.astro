@@ -1,114 +1,108 @@
 ---
-import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
-import Header from "../../components/Header";
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import PageLayout from "../../layouts/PageLayout.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import MotionWrapper from "../../components/MotionWrapper";
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header client:load pathname={Astro.url.pathname} />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+<PageLayout
+  title="部落格 | 張睿恩 (Rui-En Zhang)"
+  description="分享技術文章、學習筆記和項目心得，深入探討軟體開發、設計和創新的各個面向。"
+>
+  {/* Blog Posts Grid */}
+  <section class="container mx-auto px-6 lg:px-8 py-16 md:py-24">
+    <MotionWrapper
+      client:load
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      {
+        posts.map((post) => (
+          <article
+            class="group flex flex-col h-full rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-colors duration-300 hover:shadow-lg dark:hover:shadow-lg/30"
+          >
+            <a href={`/blog/${post.id}/`} class="flex flex-col h-full">
+              {/* Image Container */}
+              <div class="relative h-48 md:h-56 overflow-hidden bg-gray-100 dark:bg-gray-900">
+                {post.data.heroImage ? (
+                  <Image
+                    src={post.data.heroImage}
+                    alt={post.data.title}
+                    width={400}
+                    height={224}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center bg-linear-to-br from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900">
+                    <span class="text-4xl">📝</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Content Container */}
+              <div class="flex-1 flex flex-col p-5 md:p-6">
+                {/* Title */}
+                <h3 class="text-lg md:text-xl font-semibold text-gray-950 dark:text-white mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  {post.data.title}
+                </h3>
+
+                {/* Description */}
+                <p class="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-4 line-clamp-2 grow">
+                  {post.data.description}
+                </p>
+
+                {/* Date */}
+                <div class="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-800">
+                  <time class="text-xs md:text-sm text-gray-500 dark:text-gray-500">
+                    <FormattedDate date={post.data.pubDate} />
+                  </time>
+                  <span class="text-blue-600 dark:text-blue-400 text-sm font-medium group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                </div>
+              </div>
+            </a>
+          </article>
+        ))
+      }
+    </MotionWrapper>
+
+    {/* Empty State */}
+    {
+      posts.length === 0 && (
+        <div class="text-center py-12">
+          <p class="text-lg text-gray-600 dark:text-gray-400 mb-4">
+            目前還沒有文章發佈
+          </p>
+          <p class="text-sm text-gray-500 dark:text-gray-500">
+            敬請期待未來的文章分享
+          </p>
+        </div>
+      )
+    }
+  </section>
+</PageLayout>
+
+<style>
+  motion {
+    display: contents;
+  }
+</style>

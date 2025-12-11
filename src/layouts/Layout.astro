@@ -1,0 +1,14 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+const { title, description, image } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-TW" style={{ fontFamily: "var(--font-noto-sans-tc)" }}>
+  <head>
+    <BaseHead title={title} description={description} image={image} />
+  </head>
+  <body class="antialiased">
+      <slot />
+  </body>
+</html>

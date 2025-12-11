@@ -9,6 +9,7 @@ export default function Header({ pathname }: { pathname: string }) {
         { href: '/about', label: '關於我' },
         { href: '/skills', label: '技能' },
         { href: '/projects', label: '專案' },
+        { href: '/blog', label: '部落格' },
         { href: '/contact', label: '聯絡我' }
     ];
 

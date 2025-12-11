@@ -17,7 +17,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 <!doctype html>
 <html lang="zh-TW" style={{ fontFamily: "var(--font-noto-sans-tc)" }}>
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={`${title} | 張睿恩 (Rui-En Zhang)`} description={description} />
 		<style>
 			main {
 				width: calc(100% - 2em);
@@ -47,6 +47,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			}
 			.title h1 {
 				margin: 0 0 0.5em 0;
+				color: rgb(var(--black));
 			}
 			.date {
 				margin-bottom: 0.5em;
@@ -55,10 +56,15 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			.last-updated-on {
 				font-style: italic;
 			}
+			@media (prefers-color-scheme: dark) {
+				.title h1 {
+					color: rgb(var(--gray-light));
+				}
+			}
 		</style>
 	</head>
 
-	<body>
+	<body class="blog-content antialiased">
     <ScrollProgress client:visible />
     <ScrollToTop client:idle />
     <Header client:load pathname={Astro.url.pathname} />
