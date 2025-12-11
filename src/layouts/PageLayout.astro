@@ -1,18 +1,24 @@
 ---
-import Layout from "./Layout.astro";
+import BaseHead from "../components/BaseHead.astro";
 import ScrollProgress from "../components/ScrollProgress";
 import ScrollToTop from "../components/ScrollToTop";
 import Header from "../components/Header";
 import Footer from "../components/Footer.astro";
-const { title, description } = Astro.props;
+const { title, description, image } = Astro.props;
 ---
 
-<Layout title={title} description={description}>
-  <ScrollProgress client:visible />
-  <ScrollToTop client:idle />
-  <div class="min-h-screen bg-white dark:bg-gray-950">
-    <Header client:load pathname={Astro.url.pathname} />
-    <slot />
-    <Footer/>
-  </div>
-</Layout>
+<!doctype html>
+<html lang="zh-TW" style={{ fontFamily: "var(--font-noto-sans-tc)" }}>
+  <head>
+    <BaseHead title={title} description={description} image={image} />
+  </head>
+  <body class="antialiased">
+    <ScrollProgress client:visible />
+    <ScrollToTop client:idle />
+    <div class="min-h-screen bg-white dark:bg-gray-950">
+      <Header client:load pathname={Astro.url.pathname} />
+      <slot />
+      <Footer />
+    </div>
+  </body>
+</html>
